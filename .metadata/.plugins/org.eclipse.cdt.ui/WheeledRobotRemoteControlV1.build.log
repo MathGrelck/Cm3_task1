@@ -1,0 +1,122 @@
+09:31:10 **** Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+make all 
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/main.o APP/src/main.c
+APP/src/main.c: In function 'main':
+APP/src/main.c:138: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c: In function 'PrintCommStatus':
+APP/src/main.c:392: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:396: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:400: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:404: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:408: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:412: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:416: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c: In function 'PrintErrorCode':
+APP/src/main.c:425: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:428: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:431: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:434: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:437: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:440: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:443: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/stm32f10x_it.o APP/src/stm32f10x_it.c
+APP/src/stm32f10x_it.c: In function 'SysTickHandler':
+APP/src/stm32f10x_it.c:141: warning: implicit declaration of function '__ISR_DELAY'
+APP/src/stm32f10x_it.c: In function 'TIM2_IRQHandler':
+APP/src/stm32f10x_it.c:466: warning: implicit declaration of function 'TimerInterrupt_1ms'
+APP/src/stm32f10x_it.c: In function 'USART1_IRQHandler':
+APP/src/stm32f10x_it.c:566: warning: implicit declaration of function 'RxD0Interrupt'
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/dxl_hal.o APP/src/dxl_hal.c
+APP/src/dxl_hal.c: In function 'dxl_hal_open':
+APP/src/dxl_hal.c:11: warning: implicit declaration of function 'USART1_Configuration'
+APP/src/dxl_hal.c: In function 'dxl_hal_close':
+APP/src/dxl_hal.c:20: warning: implicit declaration of function 'DisableUSART1'
+APP/src/dxl_hal.c: In function 'dxl_hal_clear':
+APP/src/dxl_hal.c:27: warning: implicit declaration of function 'ClearBuffer256'
+APP/src/dxl_hal.c: In function 'dxl_hal_tx':
+APP/src/dxl_hal.c:39: warning: implicit declaration of function 'TxDByte_DXL'
+APP/src/dxl_hal.c: In function 'dxl_hal_rx':
+APP/src/dxl_hal.c:54: warning: implicit declaration of function 'CheckNewArrive'
+APP/src/dxl_hal.c:55: warning: implicit declaration of function 'RxDByte_DXL'
+APP/src/dxl_hal.c: In function 'dxl_hal_set_timeout':
+APP/src/dxl_hal.c:68: warning: implicit declaration of function 'StartDiscount'
+APP/src/dxl_hal.c: In function 'dxl_hal_timeout':
+APP/src/dxl_hal.c:76: warning: implicit declaration of function 'CheckTimeOut'
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/dynamixel.o APP/src/dynamixel.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_adc.o stm32f10x_lib/src/stm32f10x_adc.c
+stm32f10x_lib/src/stm32f10x_adc.c: In function 'ADC_DeInit':
+stm32f10x_lib/src/stm32f10x_adc.c:135: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_adc.c: In function 'ADC_SetInjectedOffset':
+stm32f10x_lib/src/stm32f10x_adc.c:1106: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_adc.c: In function 'ADC_GetInjectedConversionValue':
+stm32f10x_lib/src/stm32f10x_adc.c:1129: warning: dereferencing type-punned pointer will break strict-aliasing rules
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_bkp.o stm32f10x_lib/src/stm32f10x_bkp.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_exti.o stm32f10x_lib/src/stm32f10x_exti.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_flash.o stm32f10x_lib/src/stm32f10x_flash.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_gpio.o stm32f10x_lib/src/stm32f10x_gpio.c
+stm32f10x_lib/src/stm32f10x_gpio.c: In function 'GPIO_DeInit':
+stm32f10x_lib/src/stm32f10x_gpio.c:56: warning: dereferencing type-punned pointer will break strict-aliasing rules
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_lib.o stm32f10x_lib/src/stm32f10x_lib.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_nvic.o stm32f10x_lib/src/stm32f10x_nvic.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_pwr.o stm32f10x_lib/src/stm32f10x_pwr.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_rcc.o stm32f10x_lib/src/stm32f10x_rcc.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_systick.o stm32f10x_lib/src/stm32f10x_systick.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_tim.o stm32f10x_lib/src/stm32f10x_tim.c
+stm32f10x_lib/src/stm32f10x_tim.c: In function 'TIM_DeInit':
+stm32f10x_lib/src/stm32f10x_tim.c:139: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c: In function 'TIM_TimeBaseInit':
+stm32f10x_lib/src/stm32f10x_tim.c:218: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c:218: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c: In function 'TIM_OC1Init':
+stm32f10x_lib/src/stm32f10x_tim.c:277: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c:277: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c: In function 'TIM_OC2Init':
+stm32f10x_lib/src/stm32f10x_tim.c:368: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c:368: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c: In function 'TIM_OC3Init':
+stm32f10x_lib/src/stm32f10x_tim.c:460: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c:460: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c: In function 'TIM_OC4Init':
+stm32f10x_lib/src/stm32f10x_tim.c:552: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c:552: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c: In function 'TIM_SelectOCxM':
+stm32f10x_lib/src/stm32f10x_tim.c:2335: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c:2338: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c:2344: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_tim.c:2347: warning: dereferencing type-punned pointer will break strict-aliasing rules
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_tim1.o stm32f10x_lib/src/stm32f10x_tim1.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_usart.o stm32f10x_lib/src/stm32f10x_usart.c
+stm32f10x_lib/src/stm32f10x_usart.c: In function 'USART_DeInit':
+stm32f10x_lib/src/stm32f10x_usart.c:95: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_usart.c: In function 'USART_Init':
+stm32f10x_lib/src/stm32f10x_usart.c:159: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_usart.c: In function 'USART_ITConfig':
+stm32f10x_lib/src/stm32f10x_usart.c:365: warning: dereferencing type-punned pointer will break strict-aliasing rules
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -c   -o stm32f10x_lib/src/cortexm3_macro.o stm32f10x_lib/src/cortexm3_macro.s
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_can.o stm32f10x_lib/src/stm32f10x_can.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_dma.o stm32f10x_lib/src/stm32f10x_dma.c
+stm32f10x_lib/src/stm32f10x_dma.c: In function 'DMA_DeInit':
+stm32f10x_lib/src/stm32f10x_dma.c:83: warning: dereferencing type-punned pointer will break strict-aliasing rules
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_i2c.o stm32f10x_lib/src/stm32f10x_i2c.c
+stm32f10x_lib/src/stm32f10x_i2c.c: In function 'I2C_DeInit':
+stm32f10x_lib/src/stm32f10x_i2c.c:117: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_i2c.c: In function 'I2C_ReadRegister':
+stm32f10x_lib/src/stm32f10x_i2c.c:648: warning: dereferencing type-punned pointer will break strict-aliasing rules
+stm32f10x_lib/src/stm32f10x_i2c.c: In function 'I2C_GetFlagStatus':
+stm32f10x_lib/src/stm32f10x_i2c.c:1016: warning: dereferencing type-punned pointer will break strict-aliasing rules
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_iwdg.o stm32f10x_lib/src/stm32f10x_iwdg.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_rtc.o stm32f10x_lib/src/stm32f10x_rtc.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_spi.o stm32f10x_lib/src/stm32f10x_spi.c
+stm32f10x_lib/src/stm32f10x_spi.c: In function 'SPI_I2S_DeInit':
+stm32f10x_lib/src/stm32f10x_spi.c:67: warning: dereferencing type-punned pointer will break strict-aliasing rules
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_wwdg.o stm32f10x_lib/src/stm32f10x_wwdg.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_vector.o stm32f10x_lib/src/stm32f10x_vector.c
+stm32f10x_lib/src/stm32f10x_vector.c:133: warning: initialization makes pointer from integer without a cast
+arm-eabi-ar cr stm32f10x_lib/libstm32.a stm32f10x_lib/src/stm32f10x_adc.o stm32f10x_lib/src/stm32f10x_bkp.o stm32f10x_lib/src/stm32f10x_exti.o stm32f10x_lib/src/stm32f10x_flash.o stm32f10x_lib/src/stm32f10x_gpio.o stm32f10x_lib/src/stm32f10x_lib.o stm32f10x_lib/src/stm32f10x_nvic.o stm32f10x_lib/src/stm32f10x_pwr.o stm32f10x_lib/src/stm32f10x_rcc.o stm32f10x_lib/src/stm32f10x_systick.o stm32f10x_lib/src/stm32f10x_tim.o stm32f10x_lib/src/stm32f10x_tim1.o stm32f10x_lib/src/stm32f10x_usart.o stm32f10x_lib/src/cortexm3_macro.o stm32f10x_lib/src/stm32f10x_can.o stm32f10x_lib/src/stm32f10x_dma.o stm32f10x_lib/src/stm32f10x_i2c.o stm32f10x_lib/src/stm32f10x_iwdg.o stm32f10x_lib/src/stm32f10x_rtc.o stm32f10x_lib/src/stm32f10x_spi.o stm32f10x_lib/src/stm32f10x_wwdg.o stm32f10x_lib/src/stm32f10x_vector.o
+arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/dxl_hal.o APP/src/dynamixel.o  stm32f10x_lib/libstm32.a --output CM530.elf
+arm-eabi-objcopy -O ihex CM530.elf CM530.hex
+arm-eabi-objcopy -O binary CM530.elf CM530.bin
+arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss
+
+09:31:21 Build Finished (took 10s.821ms)
+

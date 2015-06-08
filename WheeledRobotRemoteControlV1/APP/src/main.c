@@ -5,14 +5,14 @@
 * Date               : 08/23/2010
 * Description        : Main program body
 *******************************************************************************/
-
+// LOLOLO
 /* Includes ------------------------------------------------------------------*/
 
 //#include "includes.h"
 #include "stm32f10x_lib.h"
 #include "dynamixel.h"
 #include "dxl_hal.h"
-
+//LOLOLO
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 #define P_GOAL_POSITION_L		30
