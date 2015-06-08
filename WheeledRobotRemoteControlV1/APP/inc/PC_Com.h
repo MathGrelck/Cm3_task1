@@ -13,6 +13,7 @@
 
 
 void TxDString(u8*);
+void TxArray(u8 *bData, u8 len);
 void TxDByte_PC(u8);
 
 void USART_Configuration(u8, u32);

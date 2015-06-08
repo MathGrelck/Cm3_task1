@@ -9,8 +9,6 @@
 /* Includes ------------------------------------------------------------------*/
 
 #include "stm32f10x_lib.h"
-#include "dynamixel.h"
-#include "dxl_hal.h"
 
 #include "sys_init.h"
 #include "PC_Com.h"
@@ -40,7 +38,7 @@ u8                            bMoving, CommStatus;
 
 
 //void TimerInterrupt_1ms(void);
-void RxD0Interrupt(void);
+//void RxD0Interrupt(void);
 void __ISR_DELAY(void);
 
 
@@ -64,19 +62,29 @@ int main(void)
 	DXL_init(1000000);
 
 	USART_Configuration(USART_PC, Baudrate_PC);
+
+
 	TxDString(" HELLO :)\n\r");
 	DXL_RX_com_buf[14] = 0;
+
 	while(1)
 	{
-		TxDString("sending");
-		TxDString(DXL_RX_com_buf);
-		mDelay(5);
-		DXL_send_data(10, MOVING_SPEED_L, 0xFF);
-		TxDString(DXL_RX_com_buf);
-		DXL_send_data(10, MOVING_SPEED_H, 0x01);
-		TxDString(DXL_RX_com_buf);
-		mDelay(500);
+		mDelay(1000);
 
+		TxDString("sending \n \r");
+		DXL_read_byte(0x10, 0x02);
+
+		TxArray(DXL_RX_com_buf, 10);
+		TxDString("\n \r");
+
+		DXL_send_word(10, 0x20, 2040);
+		TxDString("\n \r");
+
+		mDelay(1000);
+
+		DXL_send_word(10, 0x20, 1020);
+		TxArray(DXL_TX_com_buf, 9);
+		TxDString("\n \r");
 
 	}
 
@@ -135,11 +143,11 @@ int main(void)
 }*/
 
 /*__interrupt*/
-void RxD0Interrupt(void)
+/*void RxD0Interrupt(void)
 {
 	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
 		gbpRxInterruptBuffer[gbRxBufferWritePointer++] = USART_ReceiveData(USART1);
-}
+}*/
 
 
 

@@ -69,6 +69,14 @@ void TxDString(u8 *bData)
 	while (*bData)
 		TxDByte_PC(*bData++);
 }
+void TxArray(u8 *bData, u8 len)
+{
+	int i;
+	for(i = 0; i<len; i++)
+	{
+		TxDByte_PC(*bData++);
+	}
+}
 
 void TxDByte_PC(u8 bTxdData)
 {

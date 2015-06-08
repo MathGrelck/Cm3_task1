@@ -52,14 +52,9 @@ Discarded input sections
  .bss           0x00000000        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
  .ARM.extab     0x00000000        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
  .ARM.exidx     0x00000000        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
+ .bss           0x00000000        0x0 APP/src/main.o
  .data          0x00000000        0x0 APP/src/stm32f10x_it.o
  .bss           0x00000000        0x0 APP/src/stm32f10x_it.o
- .text          0x00000000        0x0 APP/src/dxl_hal.o
- .data          0x00000000        0x0 APP/src/dxl_hal.o
- .bss           0x00000000        0x0 APP/src/dxl_hal.o
- .text          0x00000000        0x0 APP/src/dynamixel.o
- .data          0x00000000        0x0 APP/src/dynamixel.o
- .bss           0x00000000        0x0 APP/src/dynamixel.o
  .data          0x00000000        0x0 APP/src/sys_init.o
  .bss           0x00000000        0x0 APP/src/sys_init.o
  .data          0x00000000        0x0 APP/src/PC_Com.o
@@ -136,8 +131,6 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtbegin.o
 LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
 LOAD APP/src/main.o
 LOAD APP/src/stm32f10x_it.o
-LOAD APP/src/dxl_hal.o
-LOAD APP/src/dynamixel.o
 LOAD APP/src/sys_init.o
 LOAD APP/src/PC_Com.o
 LOAD APP/src/DXL.o
@@ -273,344 +266,340 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  *(.flashtext)
                 0x08003134                . = ALIGN (0x4)
 
-.text           0x08003134     0x1a9c
+.text           0x08003134     0x1b38
                 0x08003134                . = ALIGN (0x4)
  *(.text)
- .text          0x08003134       0xcc APP/src/main.o
-                0x08003148                RxD0Interrupt
-                0x08003180                main
+ .text          0x08003134       0xbc APP/src/main.o
+                0x08003148                main
                 0x08003134                __ISR_DELAY
- .text          0x08003200      0x124 APP/src/stm32f10x_it.o
-                0x08003240                EXTI2_IRQHandler
-                0x08003208                MemManageException
-                0x080032d0                TIM8_TRG_COM_IRQHandler
-                0x080032d4                TIM8_CC_IRQHandler
-                0x0800320c                BusFaultException
-                0x0800328c                TIM1_CC_IRQHandler
-                0x080032f4                TIM6_IRQHandler
-                0x08003224                PVD_IRQHandler
-                0x080032e0                SDIO_IRQHandler
-                0x08003244                EXTI3_IRQHandler
-                0x08003214                DebugMonitor
-                0x08003218                SVCHandler
-                0x08003204                HardFaultException
-                0x0800326c                USB_HP_CAN_TX_IRQHandler
-                0x08003238                EXTI0_IRQHandler
-                0x080032a4                I2C2_EV_IRQHandler
-                0x08003268                ADC1_2_IRQHandler
-                0x080032ac                SPI1_IRQHandler
-                0x08003278                CAN_SCE_IRQHandler
-                0x08003228                TAMPER_IRQHandler
-                0x080032cc                TIM8_UP_IRQHandler
-                0x08003300                DMA2_Channel2_IRQHandler
-                0x08003258                DMA1_Channel4_IRQHandler
-                0x08003200                NMIException
-                0x080032b8                USART3_IRQHandler
-                0x0800322c                RTC_IRQHandler
-                0x08003318                SysTickHandler
-                0x08003264                DMA1_Channel7_IRQHandler
-                0x0800321c                PendSVC
-                0x080032f0                UART5_IRQHandler
-                0x080032d8                ADC3_IRQHandler
-                0x08003298                TIM4_IRQHandler
-                0x08003274                CAN_RX1_IRQHandler
-                0x080032fc                DMA2_Channel1_IRQHandler
-                0x0800329c                I2C1_EV_IRQHandler
-                0x08003260                DMA1_Channel6_IRQHandler
-                0x080032ec                UART4_IRQHandler
-                0x08003294                TIM3_IRQHandler
-                0x08003234                RCC_IRQHandler
-                0x08003288                TIM1_TRG_COM_IRQHandler
-                0x0800324c                DMA1_Channel1_IRQHandler
-                0x080032bc                EXTI15_10_IRQHandler
-                0x080032f8                TIM7_IRQHandler
-                0x080032e4                TIM5_IRQHandler
-                0x0800327c                EXTI9_5_IRQHandler
-                0x080032b0                SPI2_IRQHandler
-                0x08003270                USB_LP_CAN_RX0_IRQHandler
-                0x0800325c                DMA1_Channel5_IRQHandler
-                0x08003248                EXTI4_IRQHandler
-                0x08003254                DMA1_Channel3_IRQHandler
-                0x080032dc                FSMC_IRQHandler
-                0x08003284                TIM1_UP_IRQHandler
-                0x08003220                WWDG_IRQHandler
-                0x08003290                TIM2_IRQHandler
-                0x08003280                TIM1_BRK_IRQHandler
-                0x0800323c                EXTI1_IRQHandler
-                0x080032c0                RTCAlarm_IRQHandler
-                0x08003308                DMA2_Channel4_5_IRQHandler
-                0x080032b4                USART2_IRQHandler
-                0x080032a8                I2C2_ER_IRQHandler
-                0x08003250                DMA1_Channel2_IRQHandler
-                0x080032c8                TIM8_BRK_IRQHandler
-                0x08003210                UsageFaultException
-                0x08003230                FLASH_IRQHandler
-                0x0800330c                USART1_IRQHandler
-                0x080032e8                SPI3_IRQHandler
-                0x080032a0                I2C1_ER_IRQHandler
-                0x080032c4                USBWakeUp_IRQHandler
-                0x08003304                DMA2_Channel3_IRQHandler
- .text          0x08003324      0x178 APP/src/sys_init.o
-                0x080033c4                NVIC_Configuration
-                0x08003418                RCC_Configuration
-                0x08003324                SysTick_Configuration
-                0x0800333c                GPIO_Configuration
- .text          0x0800349c       0xe8 APP/src/PC_Com.o
-                0x08003504                USART_Configuration
-                0x0800349c                mDelay
-                0x080034c8                TxDByte_PC
-                0x080034e8                TxDString
- .text          0x08003584      0x148 APP/src/DXL.o
+ .text          0x080031f0      0x124 APP/src/stm32f10x_it.o
+                0x08003230                EXTI2_IRQHandler
+                0x080031f8                MemManageException
+                0x080032c0                TIM8_TRG_COM_IRQHandler
+                0x080032c4                TIM8_CC_IRQHandler
+                0x080031fc                BusFaultException
+                0x0800327c                TIM1_CC_IRQHandler
+                0x080032e4                TIM6_IRQHandler
+                0x08003214                PVD_IRQHandler
+                0x080032d0                SDIO_IRQHandler
+                0x08003234                EXTI3_IRQHandler
+                0x08003204                DebugMonitor
+                0x08003208                SVCHandler
+                0x080031f4                HardFaultException
+                0x0800325c                USB_HP_CAN_TX_IRQHandler
+                0x08003228                EXTI0_IRQHandler
+                0x08003294                I2C2_EV_IRQHandler
+                0x08003258                ADC1_2_IRQHandler
+                0x0800329c                SPI1_IRQHandler
+                0x08003268                CAN_SCE_IRQHandler
+                0x08003218                TAMPER_IRQHandler
+                0x080032bc                TIM8_UP_IRQHandler
+                0x080032f0                DMA2_Channel2_IRQHandler
+                0x08003248                DMA1_Channel4_IRQHandler
+                0x080031f0                NMIException
+                0x080032a8                USART3_IRQHandler
+                0x0800321c                RTC_IRQHandler
+                0x08003308                SysTickHandler
+                0x08003254                DMA1_Channel7_IRQHandler
+                0x0800320c                PendSVC
+                0x080032e0                UART5_IRQHandler
+                0x080032c8                ADC3_IRQHandler
+                0x08003288                TIM4_IRQHandler
+                0x08003264                CAN_RX1_IRQHandler
+                0x080032ec                DMA2_Channel1_IRQHandler
+                0x0800328c                I2C1_EV_IRQHandler
+                0x08003250                DMA1_Channel6_IRQHandler
+                0x080032dc                UART4_IRQHandler
+                0x08003284                TIM3_IRQHandler
+                0x08003224                RCC_IRQHandler
+                0x08003278                TIM1_TRG_COM_IRQHandler
+                0x0800323c                DMA1_Channel1_IRQHandler
+                0x080032ac                EXTI15_10_IRQHandler
+                0x080032e8                TIM7_IRQHandler
+                0x080032d4                TIM5_IRQHandler
+                0x0800326c                EXTI9_5_IRQHandler
+                0x080032a0                SPI2_IRQHandler
+                0x08003260                USB_LP_CAN_RX0_IRQHandler
+                0x0800324c                DMA1_Channel5_IRQHandler
+                0x08003238                EXTI4_IRQHandler
+                0x08003244                DMA1_Channel3_IRQHandler
+                0x080032cc                FSMC_IRQHandler
+                0x08003274                TIM1_UP_IRQHandler
+                0x08003210                WWDG_IRQHandler
+                0x08003280                TIM2_IRQHandler
+                0x08003270                TIM1_BRK_IRQHandler
+                0x0800322c                EXTI1_IRQHandler
+                0x080032b0                RTCAlarm_IRQHandler
+                0x080032f8                DMA2_Channel4_5_IRQHandler
+                0x080032a4                USART2_IRQHandler
+                0x08003298                I2C2_ER_IRQHandler
+                0x08003240                DMA1_Channel2_IRQHandler
+                0x080032b8                TIM8_BRK_IRQHandler
+                0x08003200                UsageFaultException
+                0x08003220                FLASH_IRQHandler
+                0x080032fc                USART1_IRQHandler
+                0x080032d8                SPI3_IRQHandler
+                0x08003290                I2C1_ER_IRQHandler
+                0x080032b4                USBWakeUp_IRQHandler
+                0x080032f4                DMA2_Channel3_IRQHandler
+ .text          0x08003314      0x178 APP/src/sys_init.o
+                0x080033b4                NVIC_Configuration
+                0x08003408                RCC_Configuration
+                0x08003314                SysTick_Configuration
+                0x0800332c                GPIO_Configuration
+ .text          0x0800348c      0x100 APP/src/PC_Com.o
+                0x0800350c                USART_Configuration
+                0x0800348c                mDelay
+                0x080034b8                TxDByte_PC
+                0x080034f0                TxDString
+                0x080034d8                TxArray
+ .text          0x0800358c      0x1d8 APP/src/DXL.o
+                0x080036e8                DXL_send_word
+                0x08003674                DXL_read_byte
                 0x0800358c                USARTConfiguration
-                0x08003584                DXL_read_data
                 0x080035f8                DXL_RX_interrupt
-                0x08003678                DXL_send_data
-                0x08003588                DXL_RX
                 0x080035ec                DXL_init
-                0x08003628                DXL_TX
- .text          0x080036cc      0x528 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
-                0x08003714                FLASH_Unlock
-                0x08003748                FLASH_GetWriteProtectionOptionByte
-                0x080038d8                FLASH_ReadOutProtection
-                0x08003ab0                FLASH_ProgramWord
-                0x08003a78                FLASH_ProgramHalfWord
-                0x08003bac                FLASH_ErasePage
-                0x080036e4                FLASH_HalfCycleAccessCmd
-                0x08003790                FLASH_GetFlagStatus
-                0x08003764                FLASH_GetPrefetchBufferStatus
-                0x08003b70                FLASH_EraseAllPages
-                0x0800373c                FLASH_GetUserOptionByte
-                0x0800387c                FLASH_UserOptionByteConfig
-                0x08003774                FLASH_ITConfig
-                0x0800372c                FLASH_Lock
-                0x08003af8                FLASH_EraseOptionBytes
-                0x080036fc                FLASH_PrefetchBufferCmd
-                0x080037bc                FLASH_GetStatus
-                0x080037b0                FLASH_ClearFlag
-                0x080037e8                FLASH_WaitForLastOperation
-                0x08003a34                FLASH_ProgramOptionByteData
-                0x080036cc                FLASH_SetLatency
-                0x08003754                FLASH_GetReadOutProtectionStatus
-                0x08003974                FLASH_EnableWriteProtection
- .text          0x08003bf4      0x288 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
-                0x08003cfc                GPIO_EventOutputConfig
-                0x08003cc0                GPIO_ReadOutputDataBit
-                0x08003d1c                GPIO_EventOutputCmd
-                0x08003d28                GPIO_PinRemapConfig
-                0x08003bf4                GPIO_Init
-                0x08003dbc                GPIO_AFIODeInit
-                0x08003ce8                GPIO_Write
-                0x08003ccc                GPIO_ReadOutputData
-                0x08003cb8                GPIO_ReadInputData
-                0x08003cd4                GPIO_SetBits
-                0x08003cdc                GPIO_WriteBit
-                0x08003cd8                GPIO_ResetBits
-                0x08003d88                GPIO_EXTILineConfig
-                0x08003dd4                GPIO_DeInit
-                0x08003c9c                GPIO_StructInit
-                0x08003cec                GPIO_PinLockConfig
-                0x08003cac                GPIO_ReadInputDataBit
- .text          0x08003e7c      0x384 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
-                0x080041dc                NVIC_SETFAULTMASK
-                0x080041b4                NVIC_GetBASEPRI
-                0x08003ef4                NVIC_Init
-                0x0800401c                NVIC_SetVectorTable
-                0x08003fb8                NVIC_SetIRQChannelPendingBit
-                0x080041f4                NVIC_SETPRIMASK
-                0x0800410c                NVIC_SetSystemHandlerPendingBit
-                0x08003fc4                NVIC_ClearIRQChannelPendingBit
-                0x08003f7c                NVIC_GetCurrentPendingIRQChannel
-                0x080041a0                NVIC_GetFaultAddress
-                0x08004030                NVIC_GenerateSystemReset
-                0x08003fec                NVIC_GetIRQChannelActiveBitStatus
-                0x08003eb0                NVIC_SCBDeInit
-                0x0800406c                NVIC_SystemHandlerConfig
-                0x08003fdc                NVIC_GetCurrentActiveHandler
-                0x080041d0                NVIC_RESETFAULTMASK
-                0x0800413c                NVIC_GetSystemHandlerActiveBitStatus
-                0x080041e8                NVIC_RESETPRIMASK
-                0x08004124                NVIC_ClearSystemHandlerPendingBit
-                0x08004050                NVIC_SystemLPConfig
-                0x08004094                NVIC_SystemHandlerPriorityConfig
-                0x08003f94                NVIC_GetIRQChannelPendingBitStatus
-                0x08004040                NVIC_GenerateCoreReset
-                0x08004010                NVIC_GetCPUID
-                0x080041c0                NVIC_BASEPRICONFIG
-                0x08003ee0                NVIC_PriorityGroupConfig
-                0x08003f70                NVIC_StructInit
-                0x080040ec                NVIC_GetSystemHandlerPendingBitStatus
-                0x08003e7c                NVIC_DeInit
-                0x0800415c                NVIC_GetFaultHandlerSources
- .text          0x08004200       0xe0 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
-                0x0800425c                PWR_EnterSTANDBYMode
-                0x0800422c                PWR_WakeUpPinCmd
-                0x08004200                PWR_BackupAccessCmd
-                0x08004290                PWR_EnterSTOPMode
-                0x080042c8                PWR_DeInit
-                0x08004238                PWR_GetFlagStatus
-                0x08004218                PWR_PVDLevelConfig
-                0x0800424c                PWR_ClearFlag
-                0x0800420c                PWR_PVDCmd
- .text          0x080042e0      0x3a4 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
-                0x08004398                RCC_HSICmd
-                0x080043b8                RCC_PLLCmd
-                0x08004678                RCC_ClearITPendingBit
-                0x08004604                RCC_MCOConfig
-                0x08004424                RCC_ITConfig
-                0x080043c4                RCC_SYSCLKConfig
-                0x08004354                RCC_WaitForHSEStartUp
-                0x080045ec                RCC_BackupResetCmd
-                0x080045f8                RCC_ClockSecuritySystemCmd
-                0x08004654                RCC_ClearFlag
-                0x08004320                RCC_HSEConfig
-                0x0800457c                RCC_APB2PeriphClockCmd
-                0x080043a4                RCC_PLLConfig
-                0x0800444c                RCC_ADCCLKConfig
-                0x08004460                RCC_LSEConfig
-                0x0800449c                RCC_RTCCLKCmd
-                0x08004598                RCC_APB1PeriphClockCmd
-                0x08004664                RCC_GetITStatus
-                0x08004560                RCC_AHBPeriphClockCmd
-                0x08004610                RCC_GetFlagStatus
-                0x080043d8                RCC_GetSYSCLKSource
-                0x080044a8                RCC_GetClocksFreq
-                0x0800448c                RCC_RTCCLKConfig
-                0x08004384                RCC_AdjustHSICalibrationValue
-                0x080043fc                RCC_PCLK1Config
-                0x08004440                RCC_USBCLKConfig
-                0x08004410                RCC_PCLK2Config
-                0x080042e0                RCC_DeInit
-                0x080045d0                RCC_APB1PeriphResetCmd
-                0x08004480                RCC_LSICmd
-                0x080045b4                RCC_APB2PeriphResetCmd
-                0x080043e8                RCC_HCLKConfig
- .text          0x08004684       0xa4 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
-                0x080046ac                SysTick_CounterCmd
-                0x08004700                SysTick_GetFlagStatus
-                0x08004684                SysTick_CLKSourceConfig
-                0x080046f4                SysTick_GetCounter
-                0x080046d8                SysTick_ITConfig
-                0x080046a0                SysTick_SetReload
- .text          0x08004728      0x3bc stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
-                0x08004890                USART_SetGuardTime
-                0x080048b8                USART_SmartCardCmd
-                0x08004940                USART_GetFlagStatus
-                0x080047f4                USART_SetAddress
-                0x080048a4                USART_SetPrescaler
-                0x0800487c                USART_ReceiveData
-                0x08004780                USART_Cmd
-                0x08004924                USART_IrDACmd
-                0x080049a4                USART_ClearITPendingBit
-                0x08004958                USART_GetITStatus
-                0x08004840                USART_LINBreakDetectLengthConfig
-                0x080049b4                USART_Init
-                0x080048f0                USART_HalfDuplexCmd
-                0x0800479c                USART_ITConfig
-                0x0800490c                USART_IrDAConfig
-                0x08004a50                USART_DeInit
-                0x08004748                USART_ClockInit
-                0x08004884                USART_SendBreak
-                0x0800494c                USART_ClearFlag
-                0x0800480c                USART_WakeUpConfig
-                0x08004874                USART_SendData
-                0x08004824                USART_ReceiverWakeUpCmd
-                0x08004728                USART_StructInit
-                0x080048d4                USART_SmartCardNACKCmd
-                0x08004858                USART_LINCmd
-                0x08004770                USART_ClockStructInit
-                0x080047dc                USART_DMACmd
- .text          0x08004ae4       0x6e stm32f10x_lib/libstm32.a(cortexm3_macro.o)
-                0x08004b06                __MRS_CONTROL
-                0x08004b44                __GetBASEPRI
-                0x08004b1c                __MSR_PSP
-                0x08004b32                __RESETPRIMASK
-                0x08004b36                __SETFAULTMASK
-                0x08004aec                __SEV
-                0x08004ae8                __WFE
-                0x08004b3a                __RESETFAULTMASK
-                0x08004b22                __MRS_MSP
-                0x08004b28                __MSR_MSP
-                0x08004b16                __MRS_PSP
-                0x08004b4a                __REV_HalfWord
-                0x08004ae4                __WFI
-                0x08004b0c                __MSR_CONTROL
-                0x08004b3e                __BASEPRICONFIG
-                0x08004b2e                __SETPRIMASK
-                0x08004b4e                __REV_Word
-                0x08004b02                __SVC
-                0x08004af0                __ISB
-                0x08004af6                __DSB
-                0x08004afc                __DMB
- *fill*         0x08004b52        0x2 00
- .text          0x08004b54       0x54 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-                0x08004b54                Reset_Handler
+                0x08003630                DXL_TX
+ .text          0x08003764      0x528 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+                0x080037ac                FLASH_Unlock
+                0x080037e0                FLASH_GetWriteProtectionOptionByte
+                0x08003970                FLASH_ReadOutProtection
+                0x08003b48                FLASH_ProgramWord
+                0x08003b10                FLASH_ProgramHalfWord
+                0x08003c44                FLASH_ErasePage
+                0x0800377c                FLASH_HalfCycleAccessCmd
+                0x08003828                FLASH_GetFlagStatus
+                0x080037fc                FLASH_GetPrefetchBufferStatus
+                0x08003c08                FLASH_EraseAllPages
+                0x080037d4                FLASH_GetUserOptionByte
+                0x08003914                FLASH_UserOptionByteConfig
+                0x0800380c                FLASH_ITConfig
+                0x080037c4                FLASH_Lock
+                0x08003b90                FLASH_EraseOptionBytes
+                0x08003794                FLASH_PrefetchBufferCmd
+                0x08003854                FLASH_GetStatus
+                0x08003848                FLASH_ClearFlag
+                0x08003880                FLASH_WaitForLastOperation
+                0x08003acc                FLASH_ProgramOptionByteData
+                0x08003764                FLASH_SetLatency
+                0x080037ec                FLASH_GetReadOutProtectionStatus
+                0x08003a0c                FLASH_EnableWriteProtection
+ .text          0x08003c8c      0x288 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+                0x08003d94                GPIO_EventOutputConfig
+                0x08003d58                GPIO_ReadOutputDataBit
+                0x08003db4                GPIO_EventOutputCmd
+                0x08003dc0                GPIO_PinRemapConfig
+                0x08003c8c                GPIO_Init
+                0x08003e54                GPIO_AFIODeInit
+                0x08003d80                GPIO_Write
+                0x08003d64                GPIO_ReadOutputData
+                0x08003d50                GPIO_ReadInputData
+                0x08003d6c                GPIO_SetBits
+                0x08003d74                GPIO_WriteBit
+                0x08003d70                GPIO_ResetBits
+                0x08003e20                GPIO_EXTILineConfig
+                0x08003e6c                GPIO_DeInit
+                0x08003d34                GPIO_StructInit
+                0x08003d84                GPIO_PinLockConfig
+                0x08003d44                GPIO_ReadInputDataBit
+ .text          0x08003f14      0x384 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+                0x08004274                NVIC_SETFAULTMASK
+                0x0800424c                NVIC_GetBASEPRI
+                0x08003f8c                NVIC_Init
+                0x080040b4                NVIC_SetVectorTable
+                0x08004050                NVIC_SetIRQChannelPendingBit
+                0x0800428c                NVIC_SETPRIMASK
+                0x080041a4                NVIC_SetSystemHandlerPendingBit
+                0x0800405c                NVIC_ClearIRQChannelPendingBit
+                0x08004014                NVIC_GetCurrentPendingIRQChannel
+                0x08004238                NVIC_GetFaultAddress
+                0x080040c8                NVIC_GenerateSystemReset
+                0x08004084                NVIC_GetIRQChannelActiveBitStatus
+                0x08003f48                NVIC_SCBDeInit
+                0x08004104                NVIC_SystemHandlerConfig
+                0x08004074                NVIC_GetCurrentActiveHandler
+                0x08004268                NVIC_RESETFAULTMASK
+                0x080041d4                NVIC_GetSystemHandlerActiveBitStatus
+                0x08004280                NVIC_RESETPRIMASK
+                0x080041bc                NVIC_ClearSystemHandlerPendingBit
+                0x080040e8                NVIC_SystemLPConfig
+                0x0800412c                NVIC_SystemHandlerPriorityConfig
+                0x0800402c                NVIC_GetIRQChannelPendingBitStatus
+                0x080040d8                NVIC_GenerateCoreReset
+                0x080040a8                NVIC_GetCPUID
+                0x08004258                NVIC_BASEPRICONFIG
+                0x08003f78                NVIC_PriorityGroupConfig
+                0x08004008                NVIC_StructInit
+                0x08004184                NVIC_GetSystemHandlerPendingBitStatus
+                0x08003f14                NVIC_DeInit
+                0x080041f4                NVIC_GetFaultHandlerSources
+ .text          0x08004298       0xe0 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+                0x080042f4                PWR_EnterSTANDBYMode
+                0x080042c4                PWR_WakeUpPinCmd
+                0x08004298                PWR_BackupAccessCmd
+                0x08004328                PWR_EnterSTOPMode
+                0x08004360                PWR_DeInit
+                0x080042d0                PWR_GetFlagStatus
+                0x080042b0                PWR_PVDLevelConfig
+                0x080042e4                PWR_ClearFlag
+                0x080042a4                PWR_PVDCmd
+ .text          0x08004378      0x3a4 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+                0x08004430                RCC_HSICmd
+                0x08004450                RCC_PLLCmd
+                0x08004710                RCC_ClearITPendingBit
+                0x0800469c                RCC_MCOConfig
+                0x080044bc                RCC_ITConfig
+                0x0800445c                RCC_SYSCLKConfig
+                0x080043ec                RCC_WaitForHSEStartUp
+                0x08004684                RCC_BackupResetCmd
+                0x08004690                RCC_ClockSecuritySystemCmd
+                0x080046ec                RCC_ClearFlag
+                0x080043b8                RCC_HSEConfig
+                0x08004614                RCC_APB2PeriphClockCmd
+                0x0800443c                RCC_PLLConfig
+                0x080044e4                RCC_ADCCLKConfig
+                0x080044f8                RCC_LSEConfig
+                0x08004534                RCC_RTCCLKCmd
+                0x08004630                RCC_APB1PeriphClockCmd
+                0x080046fc                RCC_GetITStatus
+                0x080045f8                RCC_AHBPeriphClockCmd
+                0x080046a8                RCC_GetFlagStatus
+                0x08004470                RCC_GetSYSCLKSource
+                0x08004540                RCC_GetClocksFreq
+                0x08004524                RCC_RTCCLKConfig
+                0x0800441c                RCC_AdjustHSICalibrationValue
+                0x08004494                RCC_PCLK1Config
+                0x080044d8                RCC_USBCLKConfig
+                0x080044a8                RCC_PCLK2Config
+                0x08004378                RCC_DeInit
+                0x08004668                RCC_APB1PeriphResetCmd
+                0x08004518                RCC_LSICmd
+                0x0800464c                RCC_APB2PeriphResetCmd
+                0x08004480                RCC_HCLKConfig
+ .text          0x0800471c       0xa4 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+                0x08004744                SysTick_CounterCmd
+                0x08004798                SysTick_GetFlagStatus
+                0x0800471c                SysTick_CLKSourceConfig
+                0x0800478c                SysTick_GetCounter
+                0x08004770                SysTick_ITConfig
+                0x08004738                SysTick_SetReload
+ .text          0x080047c0      0x3bc stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+                0x08004928                USART_SetGuardTime
+                0x08004950                USART_SmartCardCmd
+                0x080049d8                USART_GetFlagStatus
+                0x0800488c                USART_SetAddress
+                0x0800493c                USART_SetPrescaler
+                0x08004914                USART_ReceiveData
+                0x08004818                USART_Cmd
+                0x080049bc                USART_IrDACmd
+                0x08004a3c                USART_ClearITPendingBit
+                0x080049f0                USART_GetITStatus
+                0x080048d8                USART_LINBreakDetectLengthConfig
+                0x08004a4c                USART_Init
+                0x08004988                USART_HalfDuplexCmd
+                0x08004834                USART_ITConfig
+                0x080049a4                USART_IrDAConfig
+                0x08004ae8                USART_DeInit
+                0x080047e0                USART_ClockInit
+                0x0800491c                USART_SendBreak
+                0x080049e4                USART_ClearFlag
+                0x080048a4                USART_WakeUpConfig
+                0x0800490c                USART_SendData
+                0x080048bc                USART_ReceiverWakeUpCmd
+                0x080047c0                USART_StructInit
+                0x0800496c                USART_SmartCardNACKCmd
+                0x080048f0                USART_LINCmd
+                0x08004808                USART_ClockStructInit
+                0x08004874                USART_DMACmd
+ .text          0x08004b7c       0x6e stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+                0x08004b9e                __MRS_CONTROL
+                0x08004bdc                __GetBASEPRI
+                0x08004bb4                __MSR_PSP
+                0x08004bca                __RESETPRIMASK
+                0x08004bce                __SETFAULTMASK
+                0x08004b84                __SEV
+                0x08004b80                __WFE
+                0x08004bd2                __RESETFAULTMASK
+                0x08004bba                __MRS_MSP
+                0x08004bc0                __MSR_MSP
+                0x08004bae                __MRS_PSP
+                0x08004be2                __REV_HalfWord
+                0x08004b7c                __WFI
+                0x08004ba4                __MSR_CONTROL
+                0x08004bd6                __BASEPRICONFIG
+                0x08004bc6                __SETPRIMASK
+                0x08004be6                __REV_Word
+                0x08004b9a                __SVC
+                0x08004b88                __ISB
+                0x08004b8e                __DSB
+                0x08004b94                __DMB
+ *fill*         0x08004bea        0x2 00
+ .text          0x08004bec       0x54 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+                0x08004bec                Reset_Handler
  *(.text.*)
  *(.rodata)
- .rodata        0x08004ba8       0x14 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .rodata        0x08004c40       0x14 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
  *(.rodata*)
  .rodata.str1.1
-                0x08004bbc       0x14 APP/src/main.o
+                0x08004c54       0x18 APP/src/main.o
+                                 0x1c (size before relaxing)
  *(.glue_7)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtbegin.o
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
- .glue_7        0x08004bd0        0x0 APP/src/main.o
- .glue_7        0x08004bd0        0x0 APP/src/stm32f10x_it.o
- .glue_7        0x08004bd0        0x0 APP/src/dxl_hal.o
- .glue_7        0x08004bd0        0x0 APP/src/dynamixel.o
- .glue_7        0x08004bd0        0x0 APP/src/sys_init.o
- .glue_7        0x08004bd0        0x0 APP/src/PC_Com.o
- .glue_7        0x08004bd0        0x0 APP/src/DXL.o
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
- .glue_7        0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
- .glue_7        0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtbegin.o
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
+ .glue_7        0x08004c6c        0x0 APP/src/main.o
+ .glue_7        0x08004c6c        0x0 APP/src/stm32f10x_it.o
+ .glue_7        0x08004c6c        0x0 APP/src/sys_init.o
+ .glue_7        0x08004c6c        0x0 APP/src/PC_Com.o
+ .glue_7        0x08004c6c        0x0 APP/src/DXL.o
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+ .glue_7        0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
+ .glue_7        0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  *(.glue_7t)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtbegin.o
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
- .glue_7t       0x08004bd0        0x0 APP/src/main.o
- .glue_7t       0x08004bd0        0x0 APP/src/stm32f10x_it.o
- .glue_7t       0x08004bd0        0x0 APP/src/dxl_hal.o
- .glue_7t       0x08004bd0        0x0 APP/src/dynamixel.o
- .glue_7t       0x08004bd0        0x0 APP/src/sys_init.o
- .glue_7t       0x08004bd0        0x0 APP/src/PC_Com.o
- .glue_7t       0x08004bd0        0x0 APP/src/DXL.o
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
- .glue_7t       0x08004bd0        0x0 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
- .glue_7t       0x08004bd0        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
-                0x08004bd0                . = ALIGN (0x4)
-                0x08004bd0                _etext = .
-                0x08004bd0                _sidata = _etext
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtbegin.o
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
+ .glue_7t       0x08004c6c        0x0 APP/src/main.o
+ .glue_7t       0x08004c6c        0x0 APP/src/stm32f10x_it.o
+ .glue_7t       0x08004c6c        0x0 APP/src/sys_init.o
+ .glue_7t       0x08004c6c        0x0 APP/src/PC_Com.o
+ .glue_7t       0x08004c6c        0x0 APP/src/DXL.o
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+ .glue_7t       0x08004c6c        0x0 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
+ .glue_7t       0x08004c6c        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+                0x08004c6c                . = ALIGN (0x4)
+                0x08004c6c                _etext = .
+                0x08004c6c                _sidata = _etext
 
 .vfp11_veneer   0x20000000        0x0
  .vfp11_veneer  0x20000000        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
@@ -618,8 +607,6 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .vfp11_veneer  0x20000000        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
  .vfp11_veneer  0x20000000        0x0 APP/src/main.o
  .vfp11_veneer  0x20000000        0x0 APP/src/stm32f10x_it.o
- .vfp11_veneer  0x20000000        0x0 APP/src/dxl_hal.o
- .vfp11_veneer  0x20000000        0x0 APP/src/dynamixel.o
  .vfp11_veneer  0x20000000        0x0 APP/src/sys_init.o
  .vfp11_veneer  0x20000000        0x0 APP/src/PC_Com.o
  .vfp11_veneer  0x20000000        0x0 APP/src/DXL.o
@@ -648,8 +635,6 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .v4_bx         0x20000000        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
  .v4_bx         0x20000000        0x0 APP/src/main.o
  .v4_bx         0x20000000        0x0 APP/src/stm32f10x_it.o
- .v4_bx         0x20000000        0x0 APP/src/dxl_hal.o
- .v4_bx         0x20000000        0x0 APP/src/dynamixel.o
  .v4_bx         0x20000000        0x0 APP/src/sys_init.o
  .v4_bx         0x20000000        0x0 APP/src/PC_Com.o
  .v4_bx         0x20000000        0x0 APP/src/DXL.o
@@ -672,7 +657,7 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .v4_bx         0x20000000        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
  .v4_bx         0x20000000        0x0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
 
-.data           0x20000000       0x10 load address 0x08004bd0
+.data           0x20000000       0x10 load address 0x08004c6c
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
  *(.data)
@@ -685,42 +670,31 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
                 0x20000010                . = ALIGN (0x4)
                 0x20000010                _edata = .
 
-.bss            0x20000010      0x140 load address 0x08004be0
+.bss            0x20000010       0x30 load address 0x08004c7c
                 0x20000010                . = ALIGN (0x4)
                 0x20000010                _sbss = .
  *(.bss)
- .bss           0x20000010      0x110 APP/src/main.o
-                0x20000115                gbRxBufferWritePointer
-                0x20000118                Position
-                0x2000011a                wPresentPos
-                0x2000011c                Voltage
-                0x20000116                gbRxBufferReadPointer
-                0x20000015                gbpRxInterruptBuffer
-                0x20000014                INDEX
-                0x2000011e                CommStatus
-                0x2000011d                bMoving
-                0x20000010                capture
- .bss           0x20000120        0x8 APP/src/PC_Com.o
-                0x20000120                gwTimingDelay
-                0x20000124                gw1msCounter
- .bss           0x20000128       0x28 APP/src/DXL.o
-                0x2000013f                DXL_TX_com_buf
-                0x20000128                DXL_RX_buff_index
-                0x2000012c                DXL_TX_buff_index
-                0x20000130                DXL_RX_com_buf
+ .bss           0x20000010        0x8 APP/src/PC_Com.o
+                0x20000010                gwTimingDelay
+                0x20000014                gw1msCounter
+ .bss           0x20000018       0x28 APP/src/DXL.o
+                0x2000002f                DXL_TX_com_buf
+                0x20000018                DXL_RX_buff_index
+                0x2000001c                DXL_TX_buff_index
+                0x20000020                DXL_RX_com_buf
  *(COMMON)
-                0x20000150                . = ALIGN (0x4)
-                0x20000150                _ebss = .
-                0x20000150                PROVIDE (end, _ebss)
-                0x20000150                PROVIDE (_end, _ebss)
+                0x20000040                . = ALIGN (0x4)
+                0x20000040                _ebss = .
+                0x20000040                PROVIDE (end, _ebss)
+                0x20000040                PROVIDE (_end, _ebss)
 
-._usrstack      0x20000150      0x100 load address 0x08004d20
-                0x20000150                . = ALIGN (0x4)
-                0x20000150                _susrstack = .
-                0x20000250                . = (. + _Minimum_Stack_Size)
- *fill*         0x20000150      0x100 00
-                0x20000250                . = ALIGN (0x4)
-                0x20000250                _eusrstack = .
+._usrstack      0x20000040      0x100 load address 0x08004cac
+                0x20000040                . = ALIGN (0x4)
+                0x20000040                _susrstack = .
+                0x20000140                . = (. + _Minimum_Stack_Size)
+ *fill*         0x20000040      0x100 00
+                0x20000140                . = ALIGN (0x4)
+                0x20000140                _eusrstack = .
 
 .b1text
  *(.b1text)
@@ -746,8 +720,8 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  *(.eb3text)
  *(.eb3rodata)
  *(.eb3rodata*)
-                0x20000250                __exidx_start = .
-                0x20000250                __exidx_end = .
+                0x20000140                __exidx_start = .
+                0x20000140                __exidx_end = .
 
 /DISCARD/
  libc.a(*)
@@ -772,32 +746,30 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
 .stab.indexstr
  *(.stab.indexstr)
 
-.comment        0x00000000      0x300
+.comment        0x00000000      0x2c0
  *(.comment)
  .comment       0x00000000       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtbegin.o
  .comment       0x00000020       0x20 APP/src/main.o
  .comment       0x00000040       0x20 APP/src/stm32f10x_it.o
- .comment       0x00000060       0x20 APP/src/dxl_hal.o
- .comment       0x00000080       0x20 APP/src/dynamixel.o
- .comment       0x000000a0       0x20 APP/src/sys_init.o
- .comment       0x000000c0       0x20 APP/src/PC_Com.o
- .comment       0x000000e0       0x20 APP/src/DXL.o
- .comment       0x00000100       0x20 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
- .comment       0x00000120       0x20 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
- .comment       0x00000140       0x20 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
- .comment       0x00000160       0x20 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
- .comment       0x00000180       0x20 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
- .comment       0x000001a0       0x20 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
- .comment       0x000001c0       0x20 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
- .comment       0x000001e0       0x20 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
- .comment       0x00000200       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
- .comment       0x00000220       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
- .comment       0x00000240       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
- .comment       0x00000260       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
- .comment       0x00000280       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .comment       0x000002a0       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .comment       0x000002c0       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
- .comment       0x000002e0       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
+ .comment       0x00000060       0x20 APP/src/sys_init.o
+ .comment       0x00000080       0x20 APP/src/PC_Com.o
+ .comment       0x000000a0       0x20 APP/src/DXL.o
+ .comment       0x000000c0       0x20 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .comment       0x000000e0       0x20 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .comment       0x00000100       0x20 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .comment       0x00000120       0x20 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .comment       0x00000140       0x20 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .comment       0x00000160       0x20 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .comment       0x00000180       0x20 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .comment       0x000001a0       0x20 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .comment       0x000001c0       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .comment       0x000001e0       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .comment       0x00000200       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+ .comment       0x00000220       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .comment       0x00000240       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .comment       0x00000260       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .comment       0x00000280       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .comment       0x000002a0       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
 
 .debug
  *(.debug)
@@ -811,7 +783,7 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x330
+.debug_aranges  0x00000000      0x2f0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x28 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
@@ -822,277 +794,255 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .debug_aranges
                 0x00000068       0x20 APP/src/stm32f10x_it.o
  .debug_aranges
-                0x00000088       0x20 APP/src/dxl_hal.o
+                0x00000088       0x20 APP/src/sys_init.o
  .debug_aranges
-                0x000000a8       0x20 APP/src/dynamixel.o
+                0x000000a8       0x20 APP/src/PC_Com.o
  .debug_aranges
-                0x000000c8       0x20 APP/src/sys_init.o
+                0x000000c8       0x20 APP/src/DXL.o
  .debug_aranges
-                0x000000e8       0x20 APP/src/PC_Com.o
+                0x000000e8       0x20 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
  .debug_aranges
-                0x00000108       0x20 APP/src/DXL.o
+                0x00000108       0x20 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
  .debug_aranges
-                0x00000128       0x20 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+                0x00000128       0x20 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
  .debug_aranges
-                0x00000148       0x20 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+                0x00000148       0x20 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
  .debug_aranges
-                0x00000168       0x20 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+                0x00000168       0x20 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
  .debug_aranges
-                0x00000188       0x20 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+                0x00000188       0x20 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
  .debug_aranges
-                0x000001a8       0x20 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+                0x000001a8       0x20 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
  .debug_aranges
-                0x000001c8       0x20 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+                0x000001c8       0x20 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
  .debug_aranges
-                0x000001e8       0x20 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+                0x000001e8       0x20 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
  .debug_aranges
-                0x00000208       0x20 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+                0x00000208       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
  .debug_aranges
-                0x00000228       0x20 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+                0x00000228       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
  .debug_aranges
-                0x00000248       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+                0x00000248       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
  .debug_aranges
-                0x00000268       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+                0x00000268       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
  .debug_aranges
-                0x00000288       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+                0x00000288       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
  .debug_aranges
-                0x000002a8       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+                0x000002a8       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
  .debug_aranges
-                0x000002c8       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .debug_aranges
-                0x000002e8       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
- .debug_aranges
-                0x00000308       0x28 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+                0x000002c8       0x28 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
 
 .debug_pubnames
-                0x00000000     0x1b1b
+                0x00000000     0x182a
  *(.debug_pubnames)
  .debug_pubnames
-                0x00000000      0x119 APP/src/main.o
+                0x00000000      0x107 APP/src/main.o
  .debug_pubnames
-                0x00000119      0x63c APP/src/stm32f10x_it.o
+                0x00000107      0x63c APP/src/stm32f10x_it.o
  .debug_pubnames
-                0x00000755       0x91 APP/src/dxl_hal.o
+                0x00000743       0x70 APP/src/sys_init.o
  .debug_pubnames
-                0x000007e6      0x24f APP/src/dynamixel.o
+                0x000007b3       0x81 APP/src/PC_Com.o
  .debug_pubnames
-                0x00000a35       0x70 APP/src/sys_init.o
+                0x00000834       0xcc APP/src/DXL.o
  .debug_pubnames
-                0x00000aa5       0x75 APP/src/PC_Com.o
+                0x00000900      0x26e stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
  .debug_pubnames
-                0x00000b1a       0xd7 APP/src/DXL.o
+                0x00000b6e      0x17b stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
  .debug_pubnames
-                0x00000bf1      0x26e stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+                0x00000ce9      0x360 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
  .debug_pubnames
-                0x00000e5f      0x17b stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+                0x00001049       0xcb stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
  .debug_pubnames
-                0x00000fda      0x360 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+                0x00001114      0x2c4 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
  .debug_pubnames
-                0x0000133a       0xcb stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+                0x000013d8       0xa1 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
  .debug_pubnames
-                0x00001405      0x2c4 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+                0x00001479      0x25f stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
  .debug_pubnames
-                0x000016c9       0xa1 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+                0x000016d8       0x35 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
  .debug_pubnames
-                0x0000176a      0x25f stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+                0x0000170d       0x1d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
  .debug_pubnames
-                0x000019c9       0x35 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+                0x0000172a       0x1b c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
  .debug_pubnames
-                0x000019fe       0x1d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+                0x00001745       0x39 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
  .debug_pubnames
-                0x00001a1b       0x1b c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+                0x0000177e       0x3e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
  .debug_pubnames
-                0x00001a36       0x39 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+                0x000017bc       0x1d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
  .debug_pubnames
-                0x00001a6f       0x3e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+                0x000017d9       0x2a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
  .debug_pubnames
-                0x00001aad       0x1d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .debug_pubnames
-                0x00001aca       0x2a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .debug_pubnames
-                0x00001af4       0x27 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+                0x00001803       0x27 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
 
-.debug_info     0x00000000     0x71af
+.debug_info     0x00000000     0x69fa
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000       0x4d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
  .debug_info    0x0000004d       0x84 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
- .debug_info    0x000000d1      0x2f3 APP/src/main.o
- .debug_info    0x000003c4      0x5a8 APP/src/stm32f10x_it.o
- .debug_info    0x0000096c      0x16c APP/src/dxl_hal.o
- .debug_info    0x00000ad8      0x58d APP/src/dynamixel.o
- .debug_info    0x00001065      0x2b0 APP/src/sys_init.o
- .debug_info    0x00001315      0x2d4 APP/src/PC_Com.o
- .debug_info    0x000015e9      0x44d APP/src/DXL.o
- .debug_info    0x00001a36      0x73a stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
- .debug_info    0x00002170      0x648 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
- .debug_info    0x000027b8      0x8e7 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
- .debug_info    0x0000309f      0x247 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
- .debug_info    0x000032e6      0x8bd stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
- .debug_info    0x00003ba3      0x1ef stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
- .debug_info    0x00003d92      0x950 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
- .debug_info    0x000046e2       0x91 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
- .debug_info    0x00004773      0x106 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
- .debug_info    0x00004879       0xc5 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
- .debug_info    0x0000493e      0x93a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
- .debug_info    0x00005278      0x93a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
- .debug_info    0x00005bb2      0x146 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
- .debug_info    0x00005cf8      0x113 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .debug_info    0x00005e0b      0x9a5 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .debug_info    0x000067b0      0x9b2 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
- .debug_info    0x00007162       0x4d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+ .debug_info    0x000000d1      0x21c APP/src/main.o
+ .debug_info    0x000002ed      0x5a8 APP/src/stm32f10x_it.o
+ .debug_info    0x00000895      0x2b0 APP/src/sys_init.o
+ .debug_info    0x00000b45      0x31e APP/src/PC_Com.o
+ .debug_info    0x00000e63      0x41e APP/src/DXL.o
+ .debug_info    0x00001281      0x73a stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .debug_info    0x000019bb      0x648 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .debug_info    0x00002003      0x8e7 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .debug_info    0x000028ea      0x247 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .debug_info    0x00002b31      0x8bd stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .debug_info    0x000033ee      0x1ef stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .debug_info    0x000035dd      0x950 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .debug_info    0x00003f2d       0x91 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+ .debug_info    0x00003fbe      0x106 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .debug_info    0x000040c4       0xc5 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .debug_info    0x00004189      0x93a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .debug_info    0x00004ac3      0x93a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+ .debug_info    0x000053fd      0x146 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .debug_info    0x00005543      0x113 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .debug_info    0x00005656      0x9a5 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .debug_info    0x00005ffb      0x9b2 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_info    0x000069ad       0x4d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
 
-.debug_abbrev   0x00000000     0x1ea2
+.debug_abbrev   0x00000000     0x1b67
  *(.debug_abbrev)
  .debug_abbrev  0x00000000       0x12 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
  .debug_abbrev  0x00000012       0x14 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
- .debug_abbrev  0x00000026       0xf8 APP/src/main.o
- .debug_abbrev  0x0000011e       0x7c APP/src/stm32f10x_it.o
- .debug_abbrev  0x0000019a       0xc4 APP/src/dxl_hal.o
- .debug_abbrev  0x0000025e      0x22d APP/src/dynamixel.o
- .debug_abbrev  0x0000048b      0x10c APP/src/sys_init.o
- .debug_abbrev  0x00000597       0xfe APP/src/PC_Com.o
- .debug_abbrev  0x00000695      0x17c APP/src/DXL.o
- .debug_abbrev  0x00000811      0x21c stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
- .debug_abbrev  0x00000a2d      0x225 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
- .debug_abbrev  0x00000c52      0x259 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
- .debug_abbrev  0x00000eab      0x140 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
- .debug_abbrev  0x00000feb      0x29b stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
- .debug_abbrev  0x00001286      0x126 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
- .debug_abbrev  0x000013ac      0x1e1 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
- .debug_abbrev  0x0000158d       0x14 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
- .debug_abbrev  0x000015a1       0xb5 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
- .debug_abbrev  0x00001656       0x81 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
- .debug_abbrev  0x000016d7      0x177 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
- .debug_abbrev  0x0000184e      0x160 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
- .debug_abbrev  0x000019ae       0xa4 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
- .debug_abbrev  0x00001a52       0xb2 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .debug_abbrev  0x00001b04      0x1bc c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .debug_abbrev  0x00001cc0      0x1d0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
- .debug_abbrev  0x00001e90       0x12 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+ .debug_abbrev  0x00000026       0xb8 APP/src/main.o
+ .debug_abbrev  0x000000de       0x7c APP/src/stm32f10x_it.o
+ .debug_abbrev  0x0000015a      0x10c APP/src/sys_init.o
+ .debug_abbrev  0x00000266      0x127 APP/src/PC_Com.o
+ .debug_abbrev  0x0000038d      0x149 APP/src/DXL.o
+ .debug_abbrev  0x000004d6      0x21c stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .debug_abbrev  0x000006f2      0x225 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .debug_abbrev  0x00000917      0x259 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .debug_abbrev  0x00000b70      0x140 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .debug_abbrev  0x00000cb0      0x29b stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .debug_abbrev  0x00000f4b      0x126 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .debug_abbrev  0x00001071      0x1e1 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .debug_abbrev  0x00001252       0x14 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+ .debug_abbrev  0x00001266       0xb5 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .debug_abbrev  0x0000131b       0x81 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .debug_abbrev  0x0000139c      0x177 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .debug_abbrev  0x00001513      0x160 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+ .debug_abbrev  0x00001673       0xa4 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .debug_abbrev  0x00001717       0xb2 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .debug_abbrev  0x000017c9      0x1bc c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .debug_abbrev  0x00001985      0x1d0 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_abbrev  0x00001b55       0x12 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
 
-.debug_line     0x00000000     0x1927
+.debug_line     0x00000000     0x177a
  *(.debug_line)
  .debug_line    0x00000000       0x49 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
  .debug_line    0x00000049       0x9a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
- .debug_line    0x000000e3       0xb4 APP/src/main.o
- .debug_line    0x00000197      0x157 APP/src/stm32f10x_it.o
- .debug_line    0x000002ee       0x71 APP/src/dxl_hal.o
- .debug_line    0x0000035f      0x146 APP/src/dynamixel.o
- .debug_line    0x000004a5      0x100 APP/src/sys_init.o
- .debug_line    0x000005a5       0xc2 APP/src/PC_Com.o
- .debug_line    0x00000667       0xe1 APP/src/DXL.o
- .debug_line    0x00000748      0x223 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
- .debug_line    0x0000096b      0x178 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
- .debug_line    0x00000ae3      0x1aa stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
- .debug_line    0x00000c8d       0xd6 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
- .debug_line    0x00000d63      0x1b8 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
- .debug_line    0x00000f1b       0xbd stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
- .debug_line    0x00000fd8      0x1fe stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
- .debug_line    0x000011d6       0xa4 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
- .debug_line    0x0000127a       0x5e stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
- .debug_line    0x000012d8       0x74 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
- .debug_line    0x0000134c       0xef c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
- .debug_line    0x0000143b       0xdb c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
- .debug_line    0x00001516       0xa6 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
- .debug_line    0x000015bc       0xdc c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .debug_line    0x00001698      0x127 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .debug_line    0x000017bf      0x11f c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
- .debug_line    0x000018de       0x49 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+ .debug_line    0x000000e3       0x9c APP/src/main.o
+ .debug_line    0x0000017f      0x157 APP/src/stm32f10x_it.o
+ .debug_line    0x000002d6      0x100 APP/src/sys_init.o
+ .debug_line    0x000003d6       0xc9 APP/src/PC_Com.o
+ .debug_line    0x0000049f       0xfc APP/src/DXL.o
+ .debug_line    0x0000059b      0x223 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .debug_line    0x000007be      0x178 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .debug_line    0x00000936      0x1aa stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .debug_line    0x00000ae0       0xd6 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .debug_line    0x00000bb6      0x1b8 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .debug_line    0x00000d6e       0xbd stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .debug_line    0x00000e2b      0x1fe stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .debug_line    0x00001029       0xa4 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+ .debug_line    0x000010cd       0x5e stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .debug_line    0x0000112b       0x74 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .debug_line    0x0000119f       0xef c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .debug_line    0x0000128e       0xdb c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+ .debug_line    0x00001369       0xa6 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .debug_line    0x0000140f       0xdc c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .debug_line    0x000014eb      0x127 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .debug_line    0x00001612      0x11f c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_line    0x00001731       0x49 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
 
-.debug_frame    0x00000000     0x14c4
+.debug_frame    0x00000000     0x124c
  *(.debug_frame)
- .debug_frame   0x00000000       0x54 APP/src/main.o
- .debug_frame   0x00000054      0x470 APP/src/stm32f10x_it.o
- .debug_frame   0x000004c4       0xc0 APP/src/dxl_hal.o
- .debug_frame   0x00000584      0x1b8 APP/src/dynamixel.o
- .debug_frame   0x0000073c       0x80 APP/src/sys_init.o
- .debug_frame   0x000007bc       0x7c APP/src/PC_Com.o
- .debug_frame   0x00000838       0xb0 APP/src/DXL.o
- .debug_frame   0x000008e8      0x1f0 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
- .debug_frame   0x00000ad8      0x154 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
- .debug_frame   0x00000c2c      0x234 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
- .debug_frame   0x00000e60       0xb8 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
- .debug_frame   0x00000f18      0x214 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
- .debug_frame   0x0000112c       0x70 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
- .debug_frame   0x0000119c      0x1dc stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
- .debug_frame   0x00001378       0x2c stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
- .debug_frame   0x000013a4       0x28 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
- .debug_frame   0x000013cc       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
- .debug_frame   0x000013ec       0x48 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
- .debug_frame   0x00001434       0x28 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .debug_frame   0x0000145c       0x30 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .debug_frame   0x0000148c       0x38 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x00000000       0x38 APP/src/main.o
+ .debug_frame   0x00000038      0x470 APP/src/stm32f10x_it.o
+ .debug_frame   0x000004a8       0x80 APP/src/sys_init.o
+ .debug_frame   0x00000528       0x98 APP/src/PC_Com.o
+ .debug_frame   0x000005c0       0xb0 APP/src/DXL.o
+ .debug_frame   0x00000670      0x1f0 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .debug_frame   0x00000860      0x154 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .debug_frame   0x000009b4      0x234 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .debug_frame   0x00000be8       0xb8 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .debug_frame   0x00000ca0      0x214 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .debug_frame   0x00000eb4       0x70 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .debug_frame   0x00000f24      0x1dc stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .debug_frame   0x00001100       0x2c stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .debug_frame   0x0000112c       0x28 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .debug_frame   0x00001154       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .debug_frame   0x00001174       0x48 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .debug_frame   0x000011bc       0x28 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .debug_frame   0x000011e4       0x30 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .debug_frame   0x00001214       0x38 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
 
-.debug_str      0x00000000     0x286b
+.debug_str      0x00000000     0x25b0
  *(.debug_str)
- .debug_str     0x00000000      0x1a8 APP/src/main.o
-                                0x1da (size before relaxing)
- .debug_str     0x000001a8      0x52d APP/src/stm32f10x_it.o
+ .debug_str     0x00000000      0x169 APP/src/main.o
+                                0x190 (size before relaxing)
+ .debug_str     0x00000169      0x52d APP/src/stm32f10x_it.o
                                 0x5d0 (size before relaxing)
- .debug_str     0x000006d5       0xa4 APP/src/dxl_hal.o
-                                0x103 (size before relaxing)
- .debug_str     0x00000779      0x216 APP/src/dynamixel.o
-                                0x2e1 (size before relaxing)
- .debug_str     0x0000098f      0x252 APP/src/sys_init.o
+ .debug_str     0x00000696      0x252 APP/src/sys_init.o
                                 0x2fb (size before relaxing)
- .debug_str     0x00000be1       0xef APP/src/PC_Com.o
-                                0x209 (size before relaxing)
- .debug_str     0x00000cd0       0xc3 APP/src/DXL.o
-                                0x277 (size before relaxing)
- .debug_str     0x00000d93      0x395 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .debug_str     0x000008e8      0x14b APP/src/PC_Com.o
+                                0x211 (size before relaxing)
+ .debug_str     0x00000a33       0x96 APP/src/DXL.o
+                                0x256 (size before relaxing)
+ .debug_str     0x00000ac9      0x395 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
                                 0x481 (size before relaxing)
- .debug_str     0x00001128      0x20b stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .debug_str     0x00000e5e      0x20b stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
                                 0x3f0 (size before relaxing)
- .debug_str     0x00001333      0x459 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .debug_str     0x00001069      0x459 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
                                 0x5f6 (size before relaxing)
- .debug_str     0x0000178c       0xe9 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .debug_str     0x000014c2       0xe9 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
                                 0x1d6 (size before relaxing)
- .debug_str     0x00001875      0x40d stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .debug_str     0x000015ab      0x40d stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
                                 0x538 (size before relaxing)
- .debug_str     0x00001c82       0xdc stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .debug_str     0x000019b8       0xdc stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
                                 0x1d3 (size before relaxing)
- .debug_str     0x00001d5e      0x36b stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .debug_str     0x00001a94      0x36b stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
                                 0x58d (size before relaxing)
- .debug_str     0x000020c9       0x79 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .debug_str     0x00001dff       0x79 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
                                 0x11c (size before relaxing)
- .debug_str     0x00002142       0xc1 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .debug_str     0x00001e78       0xc1 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
                                 0x138 (size before relaxing)
- .debug_str     0x00002203      0x3bd c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .debug_str     0x00001f39      0x3cc c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
                                 0x4b1 (size before relaxing)
- .debug_str     0x000025c0       0x76 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+ .debug_str     0x00002305       0x76 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
                                 0x4bf (size before relaxing)
- .debug_str     0x00002636      0x103 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .debug_str     0x0000237b      0x103 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
                                 0x19e (size before relaxing)
- .debug_str     0x00002739       0x87 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .debug_str     0x0000247e       0x87 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
                                 0x123 (size before relaxing)
- .debug_str     0x000027c0       0x50 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .debug_str     0x00002505       0x50 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
                                 0x4f9 (size before relaxing)
- .debug_str     0x00002810       0x5b c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_str     0x00002555       0x5b c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
                                 0x4d9 (size before relaxing)
 
-.debug_loc      0x00000000     0x1fe9
+.debug_loc      0x00000000     0x1a51
  *(.debug_loc)
- .debug_loc     0x00000000       0x56 APP/src/main.o
- .debug_loc     0x00000056       0x56 APP/src/stm32f10x_it.o
- .debug_loc     0x000000ac      0x1d1 APP/src/dxl_hal.o
- .debug_loc     0x0000027d      0x47a APP/src/dynamixel.o
- .debug_loc     0x000006f7       0xac APP/src/sys_init.o
- .debug_loc     0x000007a3      0x136 APP/src/PC_Com.o
- .debug_loc     0x000008d9      0x178 APP/src/DXL.o
- .debug_loc     0x00000a51      0x5ec stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
- .debug_loc     0x0000103d      0x25c stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
- .debug_loc     0x00001299      0x3db stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
- .debug_loc     0x00001674      0x113 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
- .debug_loc     0x00001787      0x24d stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
- .debug_loc     0x000019d4       0x3c stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
- .debug_loc     0x00001a10      0x27f stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
- .debug_loc     0x00001c8f       0x32 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
- .debug_loc     0x00001cc1       0x49 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
- .debug_loc     0x00001d0a       0x1e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
- .debug_loc     0x00001d28       0x3e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
- .debug_loc     0x00001d66      0x12b c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
- .debug_loc     0x00001e91       0x97 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
- .debug_loc     0x00001f28       0xc1 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_loc     0x00000000       0x2b APP/src/main.o
+ .debug_loc     0x0000002b       0x56 APP/src/stm32f10x_it.o
+ .debug_loc     0x00000081       0xac APP/src/sys_init.o
+ .debug_loc     0x0000012d      0x191 APP/src/PC_Com.o
+ .debug_loc     0x000002be      0x1fb APP/src/DXL.o
+ .debug_loc     0x000004b9      0x5ec stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+ .debug_loc     0x00000aa5      0x25c stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+ .debug_loc     0x00000d01      0x3db stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+ .debug_loc     0x000010dc      0x113 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+ .debug_loc     0x000011ef      0x24d stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+ .debug_loc     0x0000143c       0x3c stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+ .debug_loc     0x00001478      0x27f stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+ .debug_loc     0x000016f7       0x32 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .debug_loc     0x00001729       0x49 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .debug_loc     0x00001772       0x1e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .debug_loc     0x00001790       0x3e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .debug_loc     0x000017ce      0x12b c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .debug_loc     0x000018f9       0x97 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .debug_loc     0x00001990       0xc1 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1123,51 +1073,47 @@ OUTPUT(CM530.elf elf32-littlearm)
  .ARM.attributes
                 0x00000087       0x31 APP/src/stm32f10x_it.o
  .ARM.attributes
-                0x000000b8       0x31 APP/src/dxl_hal.o
+                0x000000b8       0x31 APP/src/sys_init.o
  .ARM.attributes
-                0x000000e9       0x31 APP/src/dynamixel.o
+                0x000000e9       0x31 APP/src/PC_Com.o
  .ARM.attributes
-                0x0000011a       0x31 APP/src/sys_init.o
+                0x0000011a       0x31 APP/src/DXL.o
  .ARM.attributes
-                0x0000014b       0x31 APP/src/PC_Com.o
+                0x0000014b       0x31 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
  .ARM.attributes
-                0x0000017c       0x31 APP/src/DXL.o
+                0x0000017c       0x31 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
  .ARM.attributes
-                0x000001ad       0x31 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+                0x000001ad       0x31 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
  .ARM.attributes
-                0x000001de       0x31 stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+                0x000001de       0x31 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
  .ARM.attributes
-                0x0000020f       0x31 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+                0x0000020f       0x31 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
  .ARM.attributes
-                0x00000240       0x31 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+                0x00000240       0x31 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
  .ARM.attributes
-                0x00000271       0x31 stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+                0x00000271       0x31 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
  .ARM.attributes
-                0x000002a2       0x31 stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+                0x000002a2       0x21 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
  .ARM.attributes
-                0x000002d3       0x31 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+                0x000002c3       0x31 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
  .ARM.attributes
-                0x00000304       0x21 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+                0x000002f4       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
  .ARM.attributes
-                0x00000325       0x31 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+                0x00000322       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
  .ARM.attributes
-                0x00000356       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+                0x00000350       0x2c c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000384       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+                0x0000037c       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
  .ARM.attributes
-                0x000003b2       0x2c c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+                0x000003aa       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
  .ARM.attributes
-                0x000003de       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+                0x000003d8       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
  .ARM.attributes
-                0x0000040c       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+                0x00000406       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
  .ARM.attributes
-                0x0000043a       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+                0x00000434       0x2c c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
  .ARM.attributes
-                0x00000468       0x2e c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
- .ARM.attributes
-                0x00000496       0x2c c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtend.o
- .ARM.attributes
-                0x000004c2       0x14 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+                0x00000460       0x14 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
 
 .debug_ranges   0x00000000      0x138
  .debug_ranges  0x00000000       0x20 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
@@ -1191,9 +1137,6 @@ CAN_RX1_IRQHandler                                APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 CAN_SCE_IRQHandler                                APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-CheckNewArrive                                    APP/src/dxl_hal.o
-CheckTimeOut                                      APP/src/dxl_hal.o
-ClearBuffer256                                    APP/src/dxl_hal.o
 CommStatus                                        APP/src/main.o
 DMA1_Channel1_IRQHandler                          APP/src/stm32f10x_it.o
 DMA1_Channel2_IRQHandler                          APP/src/stm32f10x_it.o
@@ -1210,7 +1153,6 @@ DMA2_Channel3_IRQHandler                          APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 DMA2_Channel4_5_IRQHandler                        APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-DXL_RX                                            APP/src/DXL.o
 DXL_RX_buff_index                                 APP/src/DXL.o
 DXL_RX_com_buf                                    APP/src/DXL.o
                                                   APP/src/main.o
@@ -1219,14 +1161,15 @@ DXL_RX_interrupt                                  APP/src/DXL.o
 DXL_TX                                            APP/src/DXL.o
 DXL_TX_buff_index                                 APP/src/DXL.o
 DXL_TX_com_buf                                    APP/src/DXL.o
+                                                  APP/src/main.o
 DXL_init                                          APP/src/DXL.o
                                                   APP/src/main.o
-DXL_read_data                                     APP/src/DXL.o
-DXL_send_data                                     APP/src/DXL.o
+DXL_read_byte                                     APP/src/DXL.o
+                                                  APP/src/main.o
+DXL_send_word                                     APP/src/DXL.o
                                                   APP/src/main.o
 DebugMonitor                                      APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-DisableUSART1                                     APP/src/dxl_hal.o
 EXTI0_IRQHandler                                  APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 EXTI15_10_IRQHandler                              APP/src/stm32f10x_it.o
@@ -1421,8 +1364,6 @@ RTCAlarm_IRQHandler                               APP/src/stm32f10x_it.o
 RTC_IRQHandler                                    APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 Reset_Handler                                     stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-RxD0Interrupt                                     APP/src/main.o
-RxDByte_DXL                                       APP/src/dxl_hal.o
 SDIO_IRQHandler                                   APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 SPI1_IRQHandler                                   APP/src/stm32f10x_it.o
@@ -1433,7 +1374,6 @@ SPI3_IRQHandler                                   APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 SVCHandler                                        APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-StartDiscount                                     APP/src/dxl_hal.o
 SysTickHandler                                    APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 SysTick_CLKSourceConfig                           stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
@@ -1477,7 +1417,8 @@ TIM8_TRG_COM_IRQHandler                           APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 TIM8_UP_IRQHandler                                APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-TxDByte_DXL                                       APP/src/dxl_hal.o
+TxArray                                           APP/src/PC_Com.o
+                                                  APP/src/main.o
 TxDByte_PC                                        APP/src/PC_Com.o
 TxDString                                         APP/src/PC_Com.o
                                                   APP/src/main.o
@@ -1485,7 +1426,6 @@ UART4_IRQHandler                                  APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 UART5_IRQHandler                                  APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-USART1_Configuration                              APP/src/dxl_hal.o
 USART1_IRQHandler                                 APP/src/stm32f10x_it.o
                                                   stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
 USART2_IRQHandler                                 APP/src/stm32f10x_it.o
@@ -1511,7 +1451,6 @@ USART_GetFlagStatus                               stm32f10x_lib/libstm32.a(stm32
                                                   APP/src/PC_Com.o
 USART_GetITStatus                                 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
                                                   APP/src/DXL.o
-                                                  APP/src/main.o
 USART_HalfDuplexCmd                               stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
 USART_ITConfig                                    stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
                                                   APP/src/DXL.o
@@ -1525,7 +1464,6 @@ USART_LINBreakDetectLengthConfig                  stm32f10x_lib/libstm32.a(stm32
 USART_LINCmd                                      stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
 USART_ReceiveData                                 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
                                                   APP/src/DXL.o
-                                                  APP/src/main.o
 USART_ReceiverWakeUpCmd                           stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
 USART_SendBreak                                   stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
 USART_SendData                                    stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
@@ -1625,53 +1563,12 @@ atexit                                            c:/winarm/bin/../lib/gcc/arm-e
                                                   c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
 bMoving                                           APP/src/main.o
 capture                                           APP/src/main.o
-dxl_get_highbyte                                  APP/src/dynamixel.o
-dxl_get_lowbyte                                   APP/src/dynamixel.o
-dxl_get_result                                    APP/src/dynamixel.o
-dxl_get_rxpacket_error                            APP/src/dynamixel.o
-dxl_get_rxpacket_length                           APP/src/dynamixel.o
-dxl_get_rxpacket_parameter                        APP/src/dynamixel.o
-dxl_hal_clear                                     APP/src/dxl_hal.o
-                                                  APP/src/dynamixel.o
-dxl_hal_close                                     APP/src/dxl_hal.o
-                                                  APP/src/dynamixel.o
-dxl_hal_open                                      APP/src/dxl_hal.o
-                                                  APP/src/dynamixel.o
-dxl_hal_rx                                        APP/src/dxl_hal.o
-                                                  APP/src/dynamixel.o
-dxl_hal_set_timeout                               APP/src/dxl_hal.o
-                                                  APP/src/dynamixel.o
-dxl_hal_timeout                                   APP/src/dxl_hal.o
-                                                  APP/src/dynamixel.o
-dxl_hal_tx                                        APP/src/dxl_hal.o
-                                                  APP/src/dynamixel.o
-dxl_initialize                                    APP/src/dynamixel.o
-dxl_makeword                                      APP/src/dynamixel.o
-dxl_ping                                          APP/src/dynamixel.o
-dxl_read_byte                                     APP/src/dynamixel.o
-dxl_read_word                                     APP/src/dynamixel.o
-dxl_rx_packet                                     APP/src/dynamixel.o
-dxl_set_txpacket_id                               APP/src/dynamixel.o
-dxl_set_txpacket_instruction                      APP/src/dynamixel.o
-dxl_set_txpacket_length                           APP/src/dynamixel.o
-dxl_set_txpacket_parameter                        APP/src/dynamixel.o
-dxl_terminate                                     APP/src/dynamixel.o
-dxl_tx_packet                                     APP/src/dynamixel.o
-dxl_txrx_packet                                   APP/src/dynamixel.o
-dxl_write_byte                                    APP/src/dynamixel.o
-dxl_write_word                                    APP/src/dynamixel.o
 exit                                              c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
                                                   c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
 g_pfnVectors                                      stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
-gbCommStatus                                      APP/src/dynamixel.o
-gbInstructionPacket                               APP/src/dynamixel.o
 gbRxBufferReadPointer                             APP/src/main.o
 gbRxBufferWritePointer                            APP/src/main.o
-gbRxGetLength                                     APP/src/dynamixel.o
-gbRxPacketLength                                  APP/src/dynamixel.o
-gbStatusPacket                                    APP/src/dynamixel.o
 gbpRxInterruptBuffer                              APP/src/main.o
-giBusUsing                                        APP/src/dynamixel.o
 gw1msCounter                                      APP/src/PC_Com.o
 gwTimingDelay                                     APP/src/PC_Com.o
                                                   APP/src/main.o
