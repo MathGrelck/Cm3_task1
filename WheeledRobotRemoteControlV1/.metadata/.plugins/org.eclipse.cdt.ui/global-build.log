@@ -1,5 +1,0 @@
-18:15:59 **** Build of configuration Default for project WheeledRobotV1 ****
-make all 
-arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/main.o APP/src/main.c
-APP/src/main.c:11:23: error: dynamixel.h: No such file or directory
-make: *** [APP/src/main.o] Error 1
