@@ -53,9 +53,10 @@ MAIN_OBJS = \
  APP/src/stm32f10x_it.o \
  APP/src/dxl_hal.o \
  APP/src/dynamixel.o \
+ APP/src/sys_init.o \
+ APP/src/PC_Com.o \
+ APP/src/DXL.o \
  
- 
-
 $(MAIN_OUT_ELF): $(MAIN_OBJS) stm32f10x_lib/libstm32.a
 	$(LD) $(LDFLAGS) $(MAIN_OBJS) stm32f10x_lib/libstm32.a --output $@
 

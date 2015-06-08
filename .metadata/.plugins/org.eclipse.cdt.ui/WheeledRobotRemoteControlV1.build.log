@@ -1,31 +1,15 @@
-09:31:10 **** Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+14:43:29 **** Build of configuration Default for project WheeledRobotRemoteControlV1 ****
 make all 
 arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/main.o APP/src/main.c
 APP/src/main.c: In function 'main':
-APP/src/main.c:138: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c: In function 'PrintCommStatus':
-APP/src/main.c:392: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:396: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:400: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:404: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:408: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:412: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:416: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c: In function 'PrintErrorCode':
-APP/src/main.c:425: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:428: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:431: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:434: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:437: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:440: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:443: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:67: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:71: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c:72: warning: passing argument 1 of 'TxDString' discards qualifiers from pointer target type
+APP/src/main.c:75: warning: passing argument 1 of 'TxDString' discards qualifiers from pointer target type
+APP/src/main.c:77: warning: passing argument 1 of 'TxDString' discards qualifiers from pointer target type
 arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/stm32f10x_it.o APP/src/stm32f10x_it.c
 APP/src/stm32f10x_it.c: In function 'SysTickHandler':
-APP/src/stm32f10x_it.c:141: warning: implicit declaration of function '__ISR_DELAY'
-APP/src/stm32f10x_it.c: In function 'TIM2_IRQHandler':
-APP/src/stm32f10x_it.c:466: warning: implicit declaration of function 'TimerInterrupt_1ms'
-APP/src/stm32f10x_it.c: In function 'USART1_IRQHandler':
-APP/src/stm32f10x_it.c:566: warning: implicit declaration of function 'RxD0Interrupt'
+APP/src/stm32f10x_it.c:142: warning: implicit declaration of function '__ISR_DELAY'
 arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/dxl_hal.o APP/src/dxl_hal.c
 APP/src/dxl_hal.c: In function 'dxl_hal_open':
 APP/src/dxl_hal.c:11: warning: implicit declaration of function 'USART1_Configuration'
@@ -43,6 +27,9 @@ APP/src/dxl_hal.c:68: warning: implicit declaration of function 'StartDiscount'
 APP/src/dxl_hal.c: In function 'dxl_hal_timeout':
 APP/src/dxl_hal.c:76: warning: implicit declaration of function 'CheckTimeOut'
 arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/dynamixel.o APP/src/dynamixel.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/sys_init.o APP/src/sys_init.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/PC_Com.o APP/src/PC_Com.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/DXL.o APP/src/DXL.c
 arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_adc.o stm32f10x_lib/src/stm32f10x_adc.c
 stm32f10x_lib/src/stm32f10x_adc.c: In function 'ADC_DeInit':
 stm32f10x_lib/src/stm32f10x_adc.c:135: warning: dereferencing type-punned pointer will break strict-aliasing rules
@@ -113,10 +100,10 @@ arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_l
 arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o stm32f10x_lib/src/stm32f10x_vector.o stm32f10x_lib/src/stm32f10x_vector.c
 stm32f10x_lib/src/stm32f10x_vector.c:133: warning: initialization makes pointer from integer without a cast
 arm-eabi-ar cr stm32f10x_lib/libstm32.a stm32f10x_lib/src/stm32f10x_adc.o stm32f10x_lib/src/stm32f10x_bkp.o stm32f10x_lib/src/stm32f10x_exti.o stm32f10x_lib/src/stm32f10x_flash.o stm32f10x_lib/src/stm32f10x_gpio.o stm32f10x_lib/src/stm32f10x_lib.o stm32f10x_lib/src/stm32f10x_nvic.o stm32f10x_lib/src/stm32f10x_pwr.o stm32f10x_lib/src/stm32f10x_rcc.o stm32f10x_lib/src/stm32f10x_systick.o stm32f10x_lib/src/stm32f10x_tim.o stm32f10x_lib/src/stm32f10x_tim1.o stm32f10x_lib/src/stm32f10x_usart.o stm32f10x_lib/src/cortexm3_macro.o stm32f10x_lib/src/stm32f10x_can.o stm32f10x_lib/src/stm32f10x_dma.o stm32f10x_lib/src/stm32f10x_i2c.o stm32f10x_lib/src/stm32f10x_iwdg.o stm32f10x_lib/src/stm32f10x_rtc.o stm32f10x_lib/src/stm32f10x_spi.o stm32f10x_lib/src/stm32f10x_wwdg.o stm32f10x_lib/src/stm32f10x_vector.o
-arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/dxl_hal.o APP/src/dynamixel.o  stm32f10x_lib/libstm32.a --output CM530.elf
+arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/dxl_hal.o APP/src/dynamixel.o APP/src/sys_init.o APP/src/PC_Com.o APP/src/DXL.o  stm32f10x_lib/libstm32.a --output CM530.elf
 arm-eabi-objcopy -O ihex CM530.elf CM530.hex
 arm-eabi-objcopy -O binary CM530.elf CM530.bin
 arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss
 
-09:31:21 Build Finished (took 10s.821ms)
+14:43:39 Build Finished (took 10s.167ms)
 

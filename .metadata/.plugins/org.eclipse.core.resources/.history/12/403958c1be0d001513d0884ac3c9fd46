@@ -1,0 +1,18 @@
+/*
+ * PC_Com.h
+ *
+ *  Created on: 08/06/2015
+ *      Author: Marc
+ */
+
+#ifndef APP_INC_PC_COM_H_
+#define APP_INC_PC_COM_H_
+
+#define USART_DXL			    0
+#define USART_PC			    2
+
+
+void TxDString(u8*);
+void TxDByte_PC(byte);
+
+#endif /* APP_INC_PC_COM_H_ */

@@ -1,0 +1,15 @@
+/*
+ * AX12W.h
+ *
+ *  Created on: 08/06/2015
+ *      Author: Marc
+ */
+
+void DXL_init(u32 );//baud
+
+
+
+/* FOR ISR */
+void DXL_RX_interrupt(void);
+
+extern vu8 DXL_com_buf[15];

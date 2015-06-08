@@ -1,0 +1,24 @@
+/*
+ * init.h
+ *
+ *  Created on: 08/06/2015
+ *      Author: Marc
+ */
+
+#ifndef APP_INC_INIT_H_
+#define APP_INC_INIT_H_
+#include "stm32f10x_lib.h"
+
+void RCC_Configuration(void);
+void NVIC_Configuration(void);
+void GPIO_Configuration(void);
+void SysTick_Configuration(void);
+void Timer_configuration(void);
+void TimerInterrupt_1ms(void);
+void RxD0Interrupt(void);
+void __ISR_DELAY(void);
+void USART1_Configuration(u32);
+void USART_Configuration(u8, u32);
+
+
+#endif /* APP_INC_INIT_H_ */
