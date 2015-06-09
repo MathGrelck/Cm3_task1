@@ -21,24 +21,12 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-volatile u8                   gbpRxInterruptBuffer[256]; // dxl buffer
-volatile u8                   gbRxBufferWritePointer,gbRxBufferReadPointer;
 
 u32                             Baudrate_DXL = 	1000000;
 u32                             Baudrate_PC = 57600;
-vu32                            capture = 0;
-u16                            GoalPos[2] = {0, 1023};
-//word                            GoalPos[2] = {0, 1023};  //For EX and MX series
-u16                            Position;
-u16                            wPresentPos;
-u8                            INDEX = 0;
-u8                            Voltage;
-u8                            id = 1;
-u8                            bMoving, CommStatus;
 
 
-//void TimerInterrupt_1ms(void);
-//void RxD0Interrupt(void);
+
 void __ISR_DELAY(void);
 
 
@@ -98,30 +86,6 @@ int main(void)
 			}
 		}
 
-		/*TxDString("sending \n \r");
-		DXL_read_byte(0x10, 0x02);
-
-		TxArray(DXL_RX_com_buf, 10);
-		TxDString("\n \r");
-
-		DXL_send_word(10, 0x20, 2040);
-		TxDString("\n \r");
-
-		mDelay(1000);
-
-		DXL_send_word(10, 0x20, 1024);
-		//mDelay(1);
-		DXL_send_word(8, 30, 1023);
-		//TxArray(DXL_TX_com_buf, 9);
-		//TxDString("\n \r");
-		mDelay(1000);
-
-		DXL_send_word(10, 0x20, 1023);
-
-		mDelay(1000);
-		DXL_send_word(10, 0x20, 0);
-		//mDelay(1);
-		DXL_send_word(8, 30, 0);*/
 	}
 
 	return 0;
