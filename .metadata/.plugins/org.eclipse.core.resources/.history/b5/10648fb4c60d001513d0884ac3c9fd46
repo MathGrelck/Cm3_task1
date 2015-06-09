@@ -1,0 +1,8 @@
+/*
+ * AX12W.h
+ *
+ *  Created on: 08/06/2015
+ *      Author: Marc
+ */
+
+void AX12W_init(u32 baud);
