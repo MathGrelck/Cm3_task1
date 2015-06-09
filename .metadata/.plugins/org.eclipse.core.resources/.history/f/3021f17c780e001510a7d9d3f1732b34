@@ -17,7 +17,7 @@
 #define	ACTION		0x05
 #define DXL_RESET	0x06
 #define SYNC_WRITE	0x83
-//LOLO
+
 /*ADDRESSES*/
 #define MODEL_NUMBER_L		0x00
 #define MODEL_NUMBER_H		0x01
