@@ -1,8 +1,0 @@
-/*
- * AX12W.h
- *
- *  Created on: 08/06/2015
- *      Author: Marc
- */
-
-AX12W_init(int baud);
