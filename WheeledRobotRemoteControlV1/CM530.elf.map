@@ -1004,7 +1004,11 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .debug_pubnames
                 0x00002098       0x27 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
 
+<<<<<<< HEAD
 .debug_info     0x00000000     0x9222
+=======
+.debug_info     0x00000000     0x922a
+>>>>>>> 3c7190d347cf7b199a2a9cdad19b5d17f2a79e9e
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000       0x4d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crti.o
  .debug_info    0x0000004d       0x84 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib/crt0.o
@@ -1022,6 +1026,7 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .debug_info    0x00003acd      0x1ef stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
  .debug_info    0x00003cbc     0x2149 stm32f10x_lib/libstm32.a(stm32f10x_tim.o)
  .debug_info    0x00005e05      0x950 stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+<<<<<<< HEAD
  .debug_info    0x00006755       0x91 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
  .debug_info    0x000067e6      0x106 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
  .debug_info    0x000068ec       0xc5 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
@@ -1032,6 +1037,18 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .debug_info    0x00007e7e      0x9a5 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
  .debug_info    0x00008823      0x9b2 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
  .debug_info    0x000091d5       0x4d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+=======
+ .debug_info    0x00006755       0x99 stm32f10x_lib/libstm32.a(cortexm3_macro.o)
+ .debug_info    0x000067ee      0x106 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+ .debug_info    0x000068f4       0xc5 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+ .debug_info    0x000069b9      0x93a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+ .debug_info    0x000072f3      0x93a c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+ .debug_info    0x00007c2d      0x146 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+ .debug_info    0x00007d73      0x113 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+ .debug_info    0x00007e86      0x9a5 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+ .debug_info    0x0000882b      0x9b2 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+ .debug_info    0x000091dd       0x4d c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
+>>>>>>> 3c7190d347cf7b199a2a9cdad19b5d17f2a79e9e
 
 .debug_abbrev   0x00000000     0x1f14
  *(.debug_abbrev)
@@ -1115,6 +1132,7 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .debug_frame   0x000018dc       0x30 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
  .debug_frame   0x0000190c       0x38 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
 
+<<<<<<< HEAD
 .debug_str      0x00000000     0x31e5
  *(.debug_str)
  .debug_str     0x00000000      0x28a APP/src/main.o
@@ -1160,6 +1178,53 @@ LOAD c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/crtn.o
  .debug_str     0x0000313a       0x50 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
                                 0x4f9 (size before relaxing)
  .debug_str     0x0000318a       0x5b c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+=======
+.debug_str      0x00000000     0x31ed
+ *(.debug_str)
+ .debug_str     0x00000000      0x292 APP/src/main.o
+                                0x2bf (size before relaxing)
+ .debug_str     0x00000292      0x52d APP/src/stm32f10x_it.o
+                                0x5d8 (size before relaxing)
+ .debug_str     0x000007bf      0x25e APP/src/sys_init.o
+                                0x41a (size before relaxing)
+ .debug_str     0x00000a1d      0x12d APP/src/PC_Com.o
+                                0x25b (size before relaxing)
+ .debug_str     0x00000b4a       0xa5 APP/src/DXL.o
+                                0x25e (size before relaxing)
+ .debug_str     0x00000bef       0x62 APP/src/MotorControl.o
+                                0x113 (size before relaxing)
+ .debug_str     0x00000c51      0x395 stm32f10x_lib/libstm32.a(stm32f10x_flash.o)
+                                0x489 (size before relaxing)
+ .debug_str     0x00000fe6      0x20b stm32f10x_lib/libstm32.a(stm32f10x_gpio.o)
+                                0x3f8 (size before relaxing)
+ .debug_str     0x000011f1      0x459 stm32f10x_lib/libstm32.a(stm32f10x_nvic.o)
+                                0x5fe (size before relaxing)
+ .debug_str     0x0000164a       0xe9 stm32f10x_lib/libstm32.a(stm32f10x_pwr.o)
+                                0x1de (size before relaxing)
+ .debug_str     0x00001733      0x40d stm32f10x_lib/libstm32.a(stm32f10x_rcc.o)
+                                0x540 (size before relaxing)
+ .debug_str     0x00001b40       0xdc stm32f10x_lib/libstm32.a(stm32f10x_systick.o)
+                                0x1db (size before relaxing)
+ .debug_str     0x00001c1c      0xab5 stm32f10x_lib/libstm32.a(stm32f10x_tim.o)
+                                0xd0a (size before relaxing)
+ .debug_str     0x000026d1      0x36b stm32f10x_lib/libstm32.a(stm32f10x_usart.o)
+                                0x595 (size before relaxing)
+ .debug_str     0x00002a3c       0x79 stm32f10x_lib/libstm32.a(stm32f10x_vector.o)
+                                0x124 (size before relaxing)
+ .debug_str     0x00002ab5       0xc1 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-atexit.o)
+                                0x138 (size before relaxing)
+ .debug_str     0x00002b76      0x3cc c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-exit.o)
+                                0x4b1 (size before relaxing)
+ .debug_str     0x00002f42       0x76 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-impure.o)
+                                0x4bf (size before relaxing)
+ .debug_str     0x00002fb8      0x103 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-init.o)
+                                0x19e (size before relaxing)
+ .debug_str     0x000030bb       0x87 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-memset.o)
+                                0x123 (size before relaxing)
+ .debug_str     0x00003142       0x50 c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__atexit.o)
+                                0x4f9 (size before relaxing)
+ .debug_str     0x00003192       0x5b c:/winarm/bin/../lib/gcc/arm-eabi/4.3.0/../../../../arm-eabi/lib\libc.a(lib_a-__call_atexit.o)
+>>>>>>> 3c7190d347cf7b199a2a9cdad19b5d17f2a79e9e
                                 0x4d9 (size before relaxing)
 
 .debug_loc      0x00000000     0x2ac8
