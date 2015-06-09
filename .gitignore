@@ -1,4 +1,4 @@
 CM530.*
 *.o
 *.a
-.metadata\*
+.metadata/
