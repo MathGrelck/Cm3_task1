@@ -1,17 +1,6 @@
-21:17:24 **** Incremental Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+09:21:23 **** Incremental Build of configuration Default for project WheeledRobotRemoteControlV1 ****
 make all 
-arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/main.o APP/src/main.c
-APP/src/main.c: In function 'main':
-APP/src/main.c:67: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:74: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:77: warning: passing argument 1 of 'TxArray' discards qualifiers from pointer target type
-APP/src/main.c:78: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:81: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-APP/src/main.c:87: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
-arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/sys_init.o APP/src/PC_Com.o APP/src/DXL.o  stm32f10x_lib/libstm32.a --output CM530.elf
-arm-eabi-objcopy -O ihex CM530.elf CM530.hex
-arm-eabi-objcopy -O binary CM530.elf CM530.bin
-arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss
+make: Nothing to be done for `all'.
 
-21:17:26 Build Finished (took 1s.261ms)
+09:21:24 Build Finished (took 259ms)
 

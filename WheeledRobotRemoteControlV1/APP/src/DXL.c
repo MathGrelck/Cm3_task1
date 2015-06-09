@@ -46,7 +46,7 @@ void DXL_init(u32 baud)
 
 void DXL_send_word(u8 devId, u8 add, u16 data)
 {
-	u8 i, checksum = 0;
+	u16 i, checksum = 0;
 	// Preamble-
 	DXL_TX_com_buf[0] = 0xff;
 	DXL_TX_com_buf[1] = 0xff;
@@ -84,6 +84,11 @@ void DXL_send_word(u8 devId, u8 add, u16 data)
 	for(i = 0; i < 9; i++)
 	{
 		DXL_TX(DXL_TX_com_buf[i]); // send data
+	}
+
+	for(i = 0; i < 1100; i++) // WAIT FOR RESPONSE from device! (Approx 50 -> 100 us)
+	{
+		asm("nop");
 	}
 
 }
