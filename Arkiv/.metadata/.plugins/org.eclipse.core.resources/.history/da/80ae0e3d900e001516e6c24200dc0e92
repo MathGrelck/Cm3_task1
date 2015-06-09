@@ -1,0 +1,122 @@
+/************************* (C) COPYRIGHT 2010 ROBOTIS **************************
+* File Name          : main.c
+* Author             : danceww
+* Version            : V0.0.1
+* Date               : 08/23/2010
+* Description        : Main program body
+*******************************************************************************/
+
+/* Includes ------------------------------------------------------------------*/
+
+#include "stm32f10x_lib.h"
+
+#include "sys_init.h"
+#include "PC_Com.h"
+#include "DXL.h"
+#include "DXLdef.h"
+
+
+
+
+
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+volatile u8                   gbpRxInterruptBuffer[256]; // dxl buffer
+volatile u8                   gbRxBufferWritePointer,gbRxBufferReadPointer;
+
+u32                             Baudrate_DXL = 	1000000;
+u32                             Baudrate_PC = 57600;
+vu32                            capture = 0;
+u16                            GoalPos[2] = {0, 1023};
+//word                            GoalPos[2] = {0, 1023};  //For EX and MX series
+u16                            Position;
+u16                            wPresentPos;
+u8                            INDEX = 0;
+u8                            Voltage;
+u8                            id = 1;
+u8                            bMoving, CommStatus;
+
+
+//void TimerInterrupt_1ms(void);
+//void RxD0Interrupt(void);
+void __ISR_DELAY(void);
+
+
+
+
+
+
+int main(void)
+{
+    /* System Clocks Configuration */
+	RCC_Configuration();
+
+	/* NVIC configuration */
+	NVIC_Configuration();
+
+	/* GPIO configuration */
+	GPIO_Configuration(); // Setup of IOs
+
+	SysTick_Configuration(); // used for delay function (PC_Com.c)
+
+	DXL_init(1000000);
+
+	USART_Configuration(USART_PC, Baudrate_PC);
+
+
+	TxDString(" HELLO :)\n\r");
+	DXL_RX_com_buf[14] = 0;
+
+	while(1)
+	{
+		mDelay(1000);
+
+		/*TxDString("sending \n \r");
+		DXL_read_byte(0x10, 0x02);
+
+		TxArray(DXL_RX_com_buf, 10);
+		TxDString("\n \r");
+
+		DXL_send_word(10, 0x20, 2040);
+		TxDString("\n \r");
+
+		mDelay(1000);
+
+		DXL_send_word(10, 0x20, 1024);
+		//mDelay(1);
+		DXL_send_word(8, 30, 1023);
+		//TxArray(DXL_TX_com_buf, 9);
+		//TxDString("\n \r");
+		mDelay(1000);
+
+		DXL_send_word(10, 0x20, 1023);
+
+		mDelay(1000);
+		DXL_send_word(10, 0x20, 0);
+		//mDelay(1);
+		DXL_send_word(8, 30, 0);*/
+	}
+
+	return 0;
+}
+
+
+void __TIM2_ISR()
+{TxDString("ISR \n \r");
+	if(TIM_GetITStatus(TIM2, TIM_IT_UI1) != RESET)
+	{
+
+
+			TIM2->SR &= 0xFFFE;
+	}
+}
+
+
+void __ISR_DELAY(void)
+{
+	if (gwTimingDelay != 0x00)
+		gwTimingDelay--;
+}
+
+
+

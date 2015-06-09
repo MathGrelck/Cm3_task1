@@ -1,0 +1,111 @@
+/*
+ * AX12W.c
+ *
+ *  Created on: 08/06/2015
+ *      Author: Marc
+ */
+
+
+#include "stm32f10x_lib.h"
+#include "DXL.h"
+#include "PC_Com.h"
+
+#define PIN_ENABLE_TXD			GPIO_Pin_4
+#define PIN_ENABLE_RXD			GPIO_Pin_5
+#define PIN_DXL_TXD				GPIO_Pin_6
+#define PIN_DXL_RXD				GPIO_Pin_7
+
+#define PORT_ENABLE_TXD			GPIOB
+#define PORT_ENABLE_RXD			GPIOB
+#define PORT_DXL_TXD			GPIOB
+#define PORT_DXL_RXD			GPIOB
+
+
+/* GLOBAL VAR */
+
+vu8 DXL_RX_com_buf[15]; // FOR ISR
+
+
+/* LOCAL VAR */
+vu32 DXL_buff_index = 0;
+
+/* LOCAL FUNC */
+void USARTConfiguration();
+
+
+
+
+void DXL_init(u32 baud)
+{
+	USARTConfiguration(baud);
+}
+
+
+
+void DXL_TX(u8 devId, u8 *dataPtr)
+{
+	GPIO_ResetBits(PORT_ENABLE_RXD, PIN_ENABLE_RXD);	// RX Disable
+	GPIO_SetBits(PORT_ENABLE_TXD, PIN_ENABLE_TXD);	// TX Enable
+
+
+	while(dataPtr) // Send until NULL termination
+	{
+		USART_SendData(USART1,dataPtr);
+		*dataPtr++;
+		while( USART_GetFlagStatus(USART1, USART_FLAG_TC)==RESET ){} // wait for TX to complete
+	}
+
+
+
+	GPIO_ResetBits(PORT_ENABLE_TXD, PIN_ENABLE_TXD);	// TX Disable
+	GPIO_SetBits(PORT_ENABLE_RXD, PIN_ENABLE_RXD);	// RX Enable
+}
+
+
+
+void DXL_RX(u8 devId, u8 *add)
+{
+
+}
+
+void DXL_RX_interrupt(void)
+{/* This funtion is clled when 8 bitsisrecied through the UART (stm32f10c_it.c) */
+	if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) // IF RX interrupt RXNE bit auto-clear!
+	{
+		DXL_RX_com_buf[DXL_buff_index] = USART_ReceiveData(USART1);
+	}
+
+}
+
+
+
+
+void USARTConfiguration(u32 baudrate)
+{ /* !!!! STOLEN !!! */
+
+	USART_InitTypeDef USART_InitStructure;
+
+	USART_StructInit(&USART_InitStructure);
+
+
+	USART_InitStructure.USART_BaudRate = baudrate;
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;
+	USART_InitStructure.USART_Parity = USART_Parity_No ;
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
+
+
+		USART_DeInit(USART1);
+		mDelay(10);
+		/* Configure the USART1 */
+		USART_Init(USART1, &USART_InitStructure);
+
+		/* Enable USART1 Receive and Transmit interrupts */
+		USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+		//USART_ITConfig(USART1, USART_IT_TC, ENABLE);
+
+		/* Enable the USART1 */
+		USART_Cmd(USART1, ENABLE);
+
+}

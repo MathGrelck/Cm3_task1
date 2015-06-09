@@ -1,6 +1,14 @@
+<<<<<<< HEAD
+09:58:02 **** Incremental Build of configuration Default for project test ****
+make all 
+make: Nothing to be done for `all'.
+
+09:58:02 Build Finished (took 317ms)
+=======
 13:31:07 **** Incremental Build of configuration Default for project test ****
 make all 
 make: Nothing to be done for `all'.
 
 13:31:07 Build Finished (took 257ms)
+>>>>>>> 1651cf7d0fe93b86da7025762f20b36edee87cab
 
