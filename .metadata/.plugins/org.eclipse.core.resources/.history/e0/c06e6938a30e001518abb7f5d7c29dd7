@@ -78,7 +78,5 @@ void move_right(u16 speed)
 void init_motors()
 {
 
-
-
 }
 

@@ -132,7 +132,7 @@ void __TIM2_ISR()
 {
 	if(TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
 	{
-		TxDString("TIM2 ISR\n \r");
+		TxDString("LOLO \n \r");
 		TIM2->SR &= ~TIM_IT_CC1;
 	}
 }

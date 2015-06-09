@@ -2238,3 +2238,51 @@ make all
 make: Nothing to be done for `all'.
 >>>>>>> 1651cf7d0fe93b86da7025762f20b36edee87cab
 >>>>>>> 3c7190d347cf7b199a2a9cdad19b5d17f2a79e9e
+14:13:19 **** Incremental Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+make all 
+arm-eabi-objcopy -O binary CM530.elf CM530.bin
+arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss
+14:15:29 **** Incremental Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+make all 
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/MotorControl.o APP/src/MotorControl.c
+arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/sys_init.o APP/src/PC_Com.o APP/src/DXL.o APP/src/MotorControl.o  stm32f10x_lib/libstm32.a --output CM530.elf
+arm-eabi-objcopy -O ihex CM530.elf CM530.hex
+arm-eabi-objcopy -O binary CM530.elf CM530.bin
+arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss
+14:16:32 **** Incremental Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+make all 
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/main.o APP/src/main.c
+APP/src/main.c: In function 'main':
+APP/src/main.c:68: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c: In function '__TIM2_ISR':
+APP/src/main.c:139: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/sys_init.o APP/src/PC_Com.o APP/src/DXL.o APP/src/MotorControl.o  stm32f10x_lib/libstm32.a --output CM530.elf
+arm-eabi-objcopy -O ihex CM530.elf CM530.hex
+arm-eabi-objcopy -O binary CM530.elf CM530.bin
+arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss
+14:19:01 **** Incremental Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+make all 
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/main.o APP/src/main.c
+APP/src/main.c: In function 'main':
+APP/src/main.c:68: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+APP/src/main.c: In function '__TIM2_ISR':
+APP/src/main.c:135: warning: pointer targets in passing argument 1 of 'TxDString' differ in signedness
+arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/sys_init.o APP/src/PC_Com.o APP/src/DXL.o APP/src/MotorControl.o  stm32f10x_lib/libstm32.a --output CM530.elf
+arm-eabi-objcopy -O ihex CM530.elf CM530.hex
+arm-eabi-objcopy -O binary CM530.elf CM530.bin
+arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss
+14:23:05 **** Incremental Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+make all 
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/DXL.o APP/src/DXL.c
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/MotorControl.o APP/src/MotorControl.c
+arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/sys_init.o APP/src/PC_Com.o APP/src/DXL.o APP/src/MotorControl.o  stm32f10x_lib/libstm32.a --output CM530.elf
+arm-eabi-objcopy -O ihex CM530.elf CM530.hex
+arm-eabi-objcopy -O binary CM530.elf CM530.bin
+arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss
+14:26:07 **** Incremental Build of configuration Default for project WheeledRobotRemoteControlV1 ****
+make all 
+arm-eabi-gcc -mcpu=cortex-m3 -mthumb -Wall -g -Os -fno-common  -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc     -c -o APP/src/MotorControl.o APP/src/MotorControl.c
+arm-eabi-gcc -Wl,--gc-sections,-Map=CM530.elf.map,-cref,-u,Reset_Handler -I. -Istm32f10x_lib/inc -IHW/inc -IAPP/inc  -Lstm32f10x_lib -T stm32.ld  APP/src/main.o APP/src/stm32f10x_it.o APP/src/sys_init.o APP/src/PC_Com.o APP/src/DXL.o APP/src/MotorControl.o  stm32f10x_lib/libstm32.a --output CM530.elf
+arm-eabi-objcopy -O ihex CM530.elf CM530.hex
+arm-eabi-objcopy -O binary CM530.elf CM530.bin
+arm-eabi-objdump -h -S -C -D CM530.elf > CM530.lss

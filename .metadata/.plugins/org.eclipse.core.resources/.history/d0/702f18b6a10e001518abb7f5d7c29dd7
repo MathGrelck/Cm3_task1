@@ -97,7 +97,14 @@ int main(void)
 				move_backward(0);
 			}
 		}
+		else
+		{
 
+		}
+		move_right(400);
+		mDelay(1000);
+		move_left(400);
+		mDelay(1000);
 		/*TxDString("sending \n \r");
 		DXL_read_byte(0x10, 0x02);
 
@@ -132,7 +139,7 @@ void __TIM2_ISR()
 {
 	if(TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
 	{
-		TxDString("TIM2 ISR\n \r");
+		TxDString("LOLO \n \r");
 		TIM2->SR &= ~TIM_IT_CC1;
 	}
 }

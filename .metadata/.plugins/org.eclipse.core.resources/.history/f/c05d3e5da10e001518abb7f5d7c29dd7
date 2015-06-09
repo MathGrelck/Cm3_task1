@@ -91,11 +91,12 @@ int main(void)
 			{
 				move_right(400);
 			}
-			else
-			{
-				mDelay(100);
-				move_backward(0);
-			}
+			//move_right(400);
+		}
+		else
+		{
+			mDelay(100);
+			move_backward(0);
 		}
 
 		/*TxDString("sending \n \r");
@@ -132,7 +133,7 @@ void __TIM2_ISR()
 {
 	if(TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
 	{
-		TxDString("TIM2 ISR\n \r");
+		TxDString("LOLO \n \r");
 		TIM2->SR &= ~TIM_IT_CC1;
 	}
 }
