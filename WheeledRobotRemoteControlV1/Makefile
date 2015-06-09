@@ -20,6 +20,10 @@ ifeq ($(UNAME), Linux)
 	TCHAIN_PREFIX=arm-none-eabi-
 endif
 
+ifeq ($(UNAME), Darwin)
+	TCHAIN_PREFIX=arm-none-eabi-
+endif
+
 CC = $(TCHAIN_PREFIX)gcc
 CFLAGS = $(COMPILE_OPTS) $(INCLUDE_DIRS) 
 
