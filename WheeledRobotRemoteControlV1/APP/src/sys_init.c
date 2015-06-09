@@ -159,9 +159,24 @@ void GPIO_Configuration(void)
 
 void SysTick_Configuration(void)
 {
-	  /* SysTick end of count event each 1ms with input clock equal to 9MHz (HCLK/8, default) */
+	  /* SysTick end of count event each 1us with input clock equal to 9MHz (HCLK/8, default) */
 	  SysTick_SetReload(9);
 
 	  /* Enable SysTick interrupt */
 	  SysTick_ITConfig(ENABLE);
 }
+
+void Init_Timer2()
+{
+	TIM2->CR1 = 0x000; // Upcounting mode + no buffer on reload register, Counter diable
+	TIM2->PSC = 0x044C; // Prescaler
+	TIM2->ARR = 0xFFFF; // Reload register
+
+	TIM2->CCMR1 = 0x0000; // NO output compare and input capture!!!
+	TIM2->DIER = 0x0002; // CC1IE UIE
+	TIM2->CCR1 = 0xFF00; // CCR1 value
+	TIM2->CNT = 0x0000;
+	//TIM2->CR1 = TIM_CR1_CEN; // ENABLE TIMER!
+}
+
+

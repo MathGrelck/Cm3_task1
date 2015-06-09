@@ -62,6 +62,7 @@ MAIN_OBJS = \
  APP/src/sys_init.o \
  APP/src/PC_Com.o \
  APP/src/DXL.o \
+ APP/src/MotorControl.o \
  
 $(MAIN_OUT_ELF): $(MAIN_OBJS) stm32f10x_lib/libstm32.a
 	$(LD) $(LDFLAGS) $(MAIN_OBJS) stm32f10x_lib/libstm32.a --output $@

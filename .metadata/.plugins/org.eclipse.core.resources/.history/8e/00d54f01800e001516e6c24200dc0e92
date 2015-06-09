@@ -1,0 +1,29 @@
+/*
+ * MotorControl.c
+ *
+ *  Created on: 09/06/2015
+ *      Author: Marc
+ */
+
+
+void move_forward(u32 speed)
+{
+
+}
+
+void move_backward(u32 speed)
+{
+
+}
+
+void move_left(u32 speed)
+{
+
+}
+
+void move_right(u32 speed)
+{
+
+}
+
+
