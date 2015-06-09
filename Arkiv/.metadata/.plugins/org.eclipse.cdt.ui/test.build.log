@@ -1,0 +1,39 @@
+13:37:46 **** Clean-only build of configuration Default for project test ****
+make clean 
+rm APP/src/main.o APP/src/stm32f10x_it.o APP/src/dxl_hal.o APP/src/dynamixel.o  stm32f10x_lib/src/stm32f10x_adc.o stm32f10x_lib/src/stm32f10x_bkp.o stm32f10x_lib/src/stm32f10x_exti.o stm32f10x_lib/src/stm32f10x_flash.o stm32f10x_lib/src/stm32f10x_gpio.o stm32f10x_lib/src/stm32f10x_lib.o stm32f10x_lib/src/stm32f10x_nvic.o stm32f10x_lib/src/stm32f10x_pwr.o stm32f10x_lib/src/stm32f10x_rcc.o stm32f10x_lib/src/stm32f10x_systick.o stm32f10x_lib/src/stm32f10x_tim.o stm32f10x_lib/src/stm32f10x_tim1.o stm32f10x_lib/src/stm32f10x_usart.o stm32f10x_lib/src/cortexm3_macro.o stm32f10x_lib/src/stm32f10x_can.o stm32f10x_lib/src/stm32f10x_dma.o stm32f10x_lib/src/stm32f10x_i2c.o stm32f10x_lib/src/stm32f10x_iwdg.o stm32f10x_lib/src/stm32f10x_rtc.o stm32f10x_lib/src/stm32f10x_spi.o stm32f10x_lib/src/stm32f10x_wwdg.o stm32f10x_lib/src/stm32f10x_vector.o stm32f10x_lib/libstm32.a CM530.elf CM530.hex CM530.bin CM530.lss CM530.elf.map
+rm: cannot remove `APP/src/main.o': No such file or directory
+rm: cannot remove `APP/src/stm32f10x_it.o': No such file or directory
+rm: cannot remove `APP/src/dxl_hal.o': No such file or directory
+rm: cannot remove `APP/src/dynamixel.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_adc.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_bkp.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_exti.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_flash.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_gpio.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_lib.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_nvic.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_pwr.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_rcc.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_systick.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_tim.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_tim1.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_usart.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/cortexm3_macro.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_can.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_dma.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_i2c.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_iwdg.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_rtc.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_spi.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_wwdg.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/src/stm32f10x_vector.o': No such file or directory
+rm: cannot remove `stm32f10x_lib/libstm32.a': No such file or directory
+rm: cannot remove `CM530.elf': No such file or directory
+rm: cannot remove `CM530.hex': No such file or directory
+rm: cannot remove `CM530.bin': No such file or directory
+rm: cannot remove `CM530.lss': No such file or directory
+rm: cannot remove `CM530.elf.map': No such file or directory
+make: [clean] Error 1 (ignored)
+
+13:37:46 Build Finished (took 268ms)
+

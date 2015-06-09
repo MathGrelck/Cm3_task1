@@ -1,4 +1,4 @@
-!SESSION 2015-06-08 09:28:38.863 -----------------------------------------------
+!SESSION 2015-06-09 14:08:15.791 -----------------------------------------------
 eclipse.buildId=4.4.2.M20150204-1700
 java.version=1.8.0_45
 java.vendor=Oracle Corporation
@@ -6,9 +6,9 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Framework arguments:  -product org.eclipse.epp.package.cpp.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product
 
-!ENTRY org.eclipse.core.resources 4 567 2015-06-08 09:28:45.605
+!ENTRY org.eclipse.core.resources 4 567 2015-06-09 14:08:32.932
 !MESSAGE Workspace restored, but some problems occurred.
-!SUBENTRY 1 org.eclipse.core.resources 4 567 2015-06-08 09:28:45.605
+!SUBENTRY 1 org.eclipse.core.resources 4 567 2015-06-09 14:08:32.932
 !MESSAGE Could not read metadata for 'test'.
 !STACK 1
 org.eclipse.core.internal.resources.ResourceException: The project description file (.project) for 'test' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
@@ -53,13 +53,20 @@ org.eclipse.core.internal.resources.ResourceException: The project description f
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
-!SUBENTRY 2 org.eclipse.core.resources 4 567 2015-06-08 09:28:45.607
+!SUBENTRY 2 org.eclipse.core.resources 4 567 2015-06-09 14:08:32.934
 !MESSAGE The project description file (.project) for 'test' is missing.  This file contains important information about the project.  The project will not function properly until this file is restored.
 
-!ENTRY org.eclipse.egit.ui 2 0 2015-06-08 09:28:53.576
+!ENTRY org.eclipse.egit.ui 2 0 2015-06-09 14:08:40.537
 !MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
 Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
 The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
 this system level configuration. The Git installation location can be configured on the
 Team > Git > Configuration preference page's 'System Settings' tab.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 4 77 2015-06-09 14:09:24.056
+!MESSAGE Invalid project description.
+!SUBENTRY 1 unknown 0 0 2015-06-09 14:09:24.056
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.core.resources 4 77 2015-06-09 14:09:24.056
+!MESSAGE C:\Users\Marc\Documents\GitHub\Cm3_task1\WheeledRobotRemoteControlV1 overlaps the workspace location: C:\Users\Marc\Documents\GitHub\Cm3_task1\WheeledRobotRemoteControlV1
