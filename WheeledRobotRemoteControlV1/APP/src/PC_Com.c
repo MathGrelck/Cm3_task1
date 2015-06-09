@@ -9,8 +9,14 @@
 #include "PC_Com.h"
 
 /*---------------- GLOBAL-------------------*/
-volatile vu32                   gwTimingDelay,gw1msCounter;
+vu32                   gwTimingDelay,gw1msCounter;
+/* GLOBAL VAR */
 
+vu8 PC_RX_com_buf[15]; // FOR ISR
+
+/* LOCAL VAR */
+vu32 PC_RX_buff_index = 0;
+vu8 PC_data_rdy = 0;
 
 
 
@@ -55,7 +61,7 @@ void USART_Configuration(u8 PORT, u32 baudrate)
 		USART_Init(USART3, &USART_InitStructure);
 
 		/* Enable USART3 Receive and Transmit interrupts */
-		//USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
+		USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
 		//USART_ITConfig(USART3, USART_IT_TC, ENABLE);
 
 		/* Enable the USART3 */
@@ -102,4 +108,15 @@ void uDelay(u32 nTime)
 	SysTick_CounterCmd(SysTick_Counter_Disable);
 	/* Clear SysTick Counter */
 	SysTick_CounterCmd(SysTick_Counter_Clear);
+}
+
+void __PC_com_RX_ISR()
+{
+	if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET) // IF RX interrupt RXNE bit auto-clear!
+	{
+		PC_RX_com_buf[PC_RX_buff_index] = USART_ReceiveData(USART3);
+		PC_data_rdy = 1;
+		//PC_RX_buff_index++;
+	}
+
 }

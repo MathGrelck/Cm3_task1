@@ -14,7 +14,7 @@
 #include "PC_Com.h"
 #include "DXL.h"
 #include "DXLdef.h"
-
+#include "MotorControl.h"
 
 
 
@@ -63,15 +63,43 @@ int main(void)
 
 	USART_Configuration(USART_PC, Baudrate_PC);
 
+	Init_Timer2();
 
 	TxDString(" HELLO :)\n\r");
 	DXL_RX_com_buf[14] = 0;
 
 	while(1)
 	{
-		mDelay(1000);
 
-		TxDString("sending \n \r");
+		if(PC_data_rdy == 1)
+		{
+			PC_data_rdy = 0;
+
+			if(PC_RX_com_buf[0]=='i')
+			{
+				move_forward(700);
+			}
+			else if(PC_RX_com_buf[0]=='j')
+			{
+				move_left(400);
+			}
+			else if(PC_RX_com_buf[0]=='k')
+			{
+				move_backward(700);
+			}
+			else if(PC_RX_com_buf[0]=='l')
+			{
+				move_right(400);
+			}
+			//move_right(400);
+		}
+		else
+		{
+			mDelay(100);
+			move_backward(0);
+		}
+
+		/*TxDString("sending \n \r");
 		DXL_read_byte(0x10, 0x02);
 
 		TxArray(DXL_RX_com_buf, 10);
@@ -94,14 +122,21 @@ int main(void)
 		mDelay(1000);
 		DXL_send_word(10, 0x20, 0);
 		//mDelay(1);
-		DXL_send_word(8, 30, 0);
+		DXL_send_word(8, 30, 0);*/
 	}
 
 	return 0;
 }
 
 
-
+void __TIM2_ISR()
+{
+	if(TIM_GetITStatus(TIM2, TIM_IT_CC1) != RESET)
+	{
+		TxDString("LOLO \n \r");
+		TIM2->SR &= ~TIM_IT_CC1;
+	}
+}
 
 
 void __ISR_DELAY(void)
