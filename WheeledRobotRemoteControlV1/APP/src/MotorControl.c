@@ -57,7 +57,7 @@ void move_left(u16 speed)
 	speed = old_speed - speed;
 
 	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, old_speed+ 1024);
-	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, speed + 1024);
+	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, speed);
 
 }
 
@@ -70,7 +70,7 @@ void move_right(u16 speed)
 	}
 	speed = old_speed - speed;
 
-	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, speed + 1024);
+	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, speed);
 	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, old_speed+ 1024);
 
 }
