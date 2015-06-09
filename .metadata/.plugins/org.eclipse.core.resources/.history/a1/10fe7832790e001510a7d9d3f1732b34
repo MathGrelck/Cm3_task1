@@ -10,13 +10,13 @@
 
 
 /* INSTRUCTIONS */
-#define PING				0x01
-#define READ_DATA 			0x02
-#define WRITE_DATA			0x03
-#define REG_WRITE			0x04
-#define	ACTION				0x05
-#define DXL_RESET			0x06
-#define SYNC_WRITE			0x83
+#define PING		0x01
+#define READ_DATA 	0x02
+#define WRITE_DATA	0x03
+#define REG_WRITE	0x04
+#define	ACTION		0x05
+#define DXL_RESET	0x06
+#define SYNC_WRITE	0x83
 //LOLO
 /*ADDRESSES*/
 #define MODEL_NUMBER_L		0x00

@@ -10,7 +10,6 @@ LIBRARY_DIRS = -Lstm32f10x_lib
 
 UNAME := $(shell uname)
 
-TCHAIN_PREFIX=arm-eabi-
 #ifeq ($(UNAME), Windows_7)
 #	TCHAIN_PREFIX=arm-eabi-
 #else ifeq ($(UNAME), Linux)

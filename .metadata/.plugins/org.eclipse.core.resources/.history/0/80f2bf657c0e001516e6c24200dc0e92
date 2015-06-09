@@ -8,17 +8,9 @@ LIBRARY_DIRS = -Lstm32f10x_lib
 
 
 
-UNAME := $(shell uname)
 
 TCHAIN_PREFIX=arm-eabi-
-#ifeq ($(UNAME), Windows_7)
-#	TCHAIN_PREFIX=arm-eabi-
-#else ifeq ($(UNAME), Linux)
-#	TCHAIN_PREFIX=arm-none-eabi-
-#endif
-ifeq ($(UNAME), Linux)
-	TCHAIN_PREFIX=arm-none-eabi-
-endif
+
 
 CC = $(TCHAIN_PREFIX)gcc
 CFLAGS = $(COMPILE_OPTS) $(INCLUDE_DIRS) 

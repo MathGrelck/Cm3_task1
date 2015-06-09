@@ -19,6 +19,5 @@ void TxDByte_PC(u8);
 void USART_Configuration(u8, u32);
 
 void mDelay(u32 nTime);
-void uDelay(u32 nTime);
 
 extern volatile vu32                   gwTimingDelay,gw1msCounter;

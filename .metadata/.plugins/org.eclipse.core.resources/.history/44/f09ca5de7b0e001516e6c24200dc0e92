@@ -86,11 +86,6 @@ void TxDByte_PC(u8 bTxdData)
 
 void mDelay(u32 nTime)
 {
-	uDelay(nTime*1000);
-}
-
-void uDelay(u32 nTime)
-{
 	/* Enable the SysTick Counter */
 	SysTick_CounterCmd(SysTick_Counter_Enable);
 
