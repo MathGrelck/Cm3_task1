@@ -93,6 +93,7 @@ int main(void)
 		while(i <= 410)
 		{
 			set_IR_position(i);
+
 			for (j = 0; j<6; j++)
 			{
 				tempADCres = sampleADC(NUM_ADC1+j);
@@ -109,6 +110,7 @@ int main(void)
 
 		mDelay(1000);
 		i = 385;
+		
 		while(i >= 0)
 		{
 			set_IR_position(i);
