@@ -66,18 +66,18 @@ int main(void)
 	{
 		mDelay(5000);
 		i = 0;
-		while(i <= 1000)
+		while(i <= 410)
 		{
 			set_IR_position(i);
 			tempADCres = sampleADC(NUM_ADC1);
-			TxDByte_PC((tempADCres&0xFF00)>>8);
-			TxDByte_PC((tempADCres&0x00FF));
-			TxDString("ADC_Done");
+			//TxDByte_PC((tempADCres&0xFF00)>>8);
+			//TxDByte_PC((tempADCres&0x00FF));
+			//TxDString("ADC_Done");
 			i +=30;
 		}
 
 		mDelay(1000);
-		i = 975;
+		i = 410 -25;
 		while(i >= 0)
 		{
 			set_IR_position(i);
