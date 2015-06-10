@@ -16,6 +16,8 @@
 #include "DXLdef.h"
 #include "MotorControl.h"
 
+#include "ADC.h"
+
 
 
 
@@ -36,6 +38,8 @@ void __ISR_DELAY(void);
 
 int main(void)
 {
+	s16 i = 0;
+	u16 tempADCres;
     /* System Clocks Configuration */
 	RCC_Configuration();
 
@@ -56,9 +60,35 @@ int main(void)
 	TxDString(" HELLO :)\n\r");
 	DXL_RX_com_buf[14] = 0;
 
+	init_ADC();
+
 	while(1)
 	{
+		mDelay(5000);
+		i = 0;
+		while(i <= 1000)
+		{
+			set_IR_position(i);
+			tempADCres = sampleADC(NUM_ADC1);
+			TxDByte_PC((tempADCres&0xFF00)>>8);
+			TxDByte_PC((tempADCres&0x00FF));
+			TxDString("ADC_Done");
+			i +=30;
+		}
 
+		mDelay(1000);
+		i = 975;
+		while(i >= 0)
+		{
+			set_IR_position(i);
+			tempADCres = sampleADC(NUM_ADC1);
+			TxDByte_PC((tempADCres&0xFF00)>>8);
+			TxDByte_PC((tempADCres&0x00FF));
+			TxDString("ADC_Done");
+			i -=25;
+		}
+
+/*
 		if(PC_data_rdy == 1)
 		{
 			PC_data_rdy = 0;
@@ -84,7 +114,7 @@ int main(void)
 				mDelay(100);
 				move_backward(0);
 			}
-		}
+		}*/
 
 	}
 
