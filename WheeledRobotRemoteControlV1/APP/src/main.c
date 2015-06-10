@@ -10,6 +10,7 @@
 
 #include "stm32f10x_lib.h"
 
+
 #include "sys_init.h"
 #include "PC_Com.h"
 #include "DXL.h"
@@ -18,28 +19,11 @@
 
 #include "ADC.h"
 
-#define PORT_SIG_MOT1P          GPIOA
-#define PORT_SIG_MOT1M          GPIOA
-
-#define PIN_SIG_MOT1P           GPIO_Pin_0 //Turn on pin
-#define PIN_SIG_MOT1M           GPIO_Pin_1 //Turn on pin
-
-#define	SIG_ADC_1 				ADC_Channel_5 //select adc channel 
-#define SIG_ADC_0				ADC_Channel_10  // select adc channel 
-
-#define PORT_ADC_SELECT0        GPIOC
-#define PORT_ADC_SELECT1        GPIOC
-
-#define PORT_LED_POWER			GPIOC
-
-#define PIN_ADC_SELECT0         GPIO_Pin_1
-#define PIN_ADC_SELECT1         GPIO_Pin_2
-#define PIN_ADC0				GPIO_Pin_0
-#define PIN_VDD_VOLT			GPIO_Pin_3
-
-#define PIN_PC_TXD				GPIO_Pin_10
-
-#define PIN_LED_POWER			GPIO_Pin_13
+#define IR_SENSOR_RIGHT				2
+#define IR_SENSOR_RIGHT_front		3
+#define IR_SENSOR_FRONT				1
+#define IR_SENSOR_LEFT_front		0
+#define IR_SENSOR_LEFT				4
 
 
 /* Private macro -------------------------------------------------------------*/
@@ -47,11 +31,11 @@
 
 u32                             Baudrate_DXL = 	1000000;
 u32                             Baudrate_PC = 57600;
-
-
+u16								ADCres_buf[10];
+u16 diff = 0;
+float SCALE = 0.7f;
 
 void __ISR_DELAY(void);
-void GPIO_Start(void);
 
 
 
@@ -60,7 +44,7 @@ void GPIO_Start(void);
 int main(void)
 {
 	s16 i = 0;
-	u16 tempADCres, j;
+	u16 tempADCres, j =0;
     /* System Clocks Configuration */
 	RCC_Configuration();
 
@@ -84,49 +68,84 @@ int main(void)
 
 	init_ADC();
 
+	GPIO_SetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
+	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
+
 	while(1)
 	{
+
+
+
+		for (j = 0; j<5; j++)
+		{
+			ADCres_buf[j] = sampleADC(NUM_ADC1+j);
+
+		}
+		move_forward(400);
+		if((ADCres_buf[IR_SENSOR_RIGHT] >ADCres_buf[IR_SENSOR_LEFT]) || (ADCres_buf[IR_SENSOR_RIGHT_front] > ADCres_buf[IR_SENSOR_LEFT_front]))
+		{
+			if(ADCres_buf[IR_SENSOR_FRONT] > 200)
+			{
+				move_right(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front])*2) + ADCres_buf[IR_SENSOR_FRONT]*2);
+			}
+
+			move_left(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front]))*2);
+		}
+		else if((ADCres_buf[IR_SENSOR_LEFT] > ADCres_buf[IR_SENSOR_RIGHT]) || (ADCres_buf[IR_SENSOR_LEFT_front] > ADCres_buf[IR_SENSOR_RIGHT_front]) )
+		{
+			if(ADCres_buf[IR_SENSOR_FRONT] > 300)
+			{
+				move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front])*2) + ADCres_buf[IR_SENSOR_FRONT]*2);
+			}
+
+			move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front]))*2);
+		}
+
+
+
+
+
+		/*
+		tempADCres = 0;
 		TxDString("starting wait\n\r");
 
 		mDelay(5000);
-		i = 0;
-		while(i <= 410)
+		i = 214;
+		while(i <= 814)
 		{
 			set_IR_position(i);
 
-			for (j = 0; j<6; j++)
+			for (j = 0; j<10; j++)
 			{
-				tempADCres = sampleADC(NUM_ADC1+j);
-				TxDString("ADC data ");
-				TxDByte_PC(j);
-				TxDString(": ");
-				TxDByte_PC((tempADCres&0xFF00)>>8);
-				TxDByte_PC((tempADCres&0x00FF));
-				TxDString("\n\r");
+				tempADCres += (sampleADC(NUM_ADC1+5));
 				
 			}
-			i +=25;
+			TxDString("ADC data ");
+			TxDString(": ");
+			TxDByte_PC((tempADCres&0xFF00)>>8);
+			TxDByte_PC((tempADCres&0x00FF));
+			TxDString("\n\r");
+			i +=40;
 		}
 
 		mDelay(1000);
-		i = 385;
-		
-		while(i >= 0)
+		i = 774;
+		tempADCres = 0;
+		while(i >= 214)
 		{
 			set_IR_position(i);
-			for (j = 0; j<6; j++)
+			for (j = 0; j<10; j++)
 			{
-				tempADCres = sampleADC(NUM_ADC1+j);
-				TxDString("ADC data ");
-				TxDByte_PC(j);
-				TxDString(": ");
-				TxDByte_PC((tempADCres&0xFF00)>>8);
-				TxDByte_PC((tempADCres&0x00FF));
-				TxDString("\n\r");
-				
+				tempADCres += (sampleADC(NUM_ADC1+5));
+
 			}
-			i -=25;
-		}
+			TxDString("ADC data ");
+			TxDString(": ");
+			TxDByte_PC((tempADCres&0xFF00)>>8);
+			TxDByte_PC((tempADCres&0x00FF));
+			TxDString("\n\r");
+			i -=40;
+		}*/
 
 
 
