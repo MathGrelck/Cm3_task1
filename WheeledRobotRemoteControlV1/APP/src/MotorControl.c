@@ -12,10 +12,21 @@
 
 #define MOTOR_LEFT_ADD 	10
 #define MOTOR_RIGHT_ADD	9
-
+#define MOTOR_STEP	2
 
 u16 old_speed = 0;
 
+
+void set_IR_position(u16 pos)
+{
+	if(pos > 1023)
+	{
+		pos = 1023;
+	}
+
+	DXL_send_word(MOTOR_STEP, GOAL_POSITION_L, pos);
+
+}
 
 void move_forward(u16 speed)
 {

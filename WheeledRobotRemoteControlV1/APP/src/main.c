@@ -16,29 +16,19 @@
 #include "DXLdef.h"
 #include "MotorControl.h"
 
+#include "ADC.h"
+
 
 
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-volatile u8                   gbpRxInterruptBuffer[256]; // dxl buffer
-volatile u8                   gbRxBufferWritePointer,gbRxBufferReadPointer;
 
 u32                             Baudrate_DXL = 	1000000;
 u32                             Baudrate_PC = 57600;
-vu32                            capture = 0;
-u16                            GoalPos[2] = {0, 1023};
-//word                            GoalPos[2] = {0, 1023};  //For EX and MX series
-u16                            Position;
-u16                            wPresentPos;
-u8                            INDEX = 0;
-u8                            Voltage;
-u8                            id = 1;
-u8                            bMoving, CommStatus;
 
 
-//void TimerInterrupt_1ms(void);
-//void RxD0Interrupt(void);
+
 void __ISR_DELAY(void);
 
 
@@ -48,6 +38,8 @@ void __ISR_DELAY(void);
 
 int main(void)
 {
+	s16 i = 0;
+	u16 tempADCres;
     /* System Clocks Configuration */
 	RCC_Configuration();
 
@@ -68,9 +60,35 @@ int main(void)
 	TxDString(" HELLO :)\n\r");
 	DXL_RX_com_buf[14] = 0;
 
+	init_ADC();
+
 	while(1)
 	{
+		mDelay(5000);
+		i = 0;
+		while(i <= 1000)
+		{
+			set_IR_position(i);
+			tempADCres = sampleADC(NUM_ADC1);
+			TxDByte_PC((tempADCres&0xFF00)>>8);
+			TxDByte_PC((tempADCres&0x00FF));
+			TxDString("ADC_Done");
+			i +=30;
+		}
 
+		mDelay(1000);
+		i = 975;
+		while(i >= 0)
+		{
+			set_IR_position(i);
+			tempADCres = sampleADC(NUM_ADC1);
+			TxDByte_PC((tempADCres&0xFF00)>>8);
+			TxDByte_PC((tempADCres&0x00FF));
+			TxDString("ADC_Done");
+			i -=25;
+		}
+
+/*
 		if(PC_data_rdy == 1)
 		{
 			PC_data_rdy = 0;
@@ -96,32 +114,8 @@ int main(void)
 				mDelay(100);
 				move_backward(0);
 			}
-		}
+		}*/
 
-		/*TxDString("sending \n \r");
-		DXL_read_byte(0x10, 0x02);
-
-		TxArray(DXL_RX_com_buf, 10);
-		TxDString("\n \r");
-
-		DXL_send_word(10, 0x20, 2040);
-		TxDString("\n \r");
-
-		mDelay(1000);
-
-		DXL_send_word(10, 0x20, 1024);
-		//mDelay(1);
-		DXL_send_word(8, 30, 1023);
-		//TxArray(DXL_TX_com_buf, 9);
-		//TxDString("\n \r");
-		mDelay(1000);
-
-		DXL_send_word(10, 0x20, 1023);
-
-		mDelay(1000);
-		DXL_send_word(10, 0x20, 0);
-		//mDelay(1);
-		DXL_send_word(8, 30, 0);*/
 	}
 
 	return 0;

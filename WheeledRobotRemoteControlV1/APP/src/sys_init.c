@@ -1,7 +1,8 @@
 #include "stm32f10x_lib.h"
 #include "sys_init.h"
+#include "ADC.h"
 
-
+#define PIN_LED_POWER			GPIO_Pin_13
 
 #define PORT_ENABLE_TXD			GPIOB
 #define PORT_ENABLE_RXD			GPIOB
@@ -16,6 +17,15 @@
 #define PIN_PC_RXD              GPIO_Pin_11
 
 
+#define PORT_ADC_0				PORTC
+#define PORT_ADC_1				PORTA
+
+#define PIN_ENABLE_TXD			GPIO_Pin_4
+#define PIN_ENABLE_RXD			GPIO_Pin_5
+#define PIN_DXL_TXD				GPIO_Pin_6
+#define PIN_DXL_RXD				GPIO_Pin_7
+#define PIN_PC_TXD				GPIO_Pin_10
+#define PIN_PC_RXD              GPIO_Pin_11
 
 
 /*******************************************************************************
@@ -134,8 +144,18 @@ void GPIO_Configuration(void)
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_StructInit(&GPIO_InitStructure);
 
+	// PORTA CONFIG
+	GPIO_InitStructure.GPIO_Pin = 	 ADC_1_PIN_SIG_MOT1P | ADC_1_PIN_SIG_MOT1M | ADC_2_PIN_SIG_MOT1P | ADC_2_PIN_SIG_MOT1M | ADC_3_PIN_SIG_MOT1P | ADC_3_PIN_SIG_MOT1M;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+	GPIO_InitStructure.GPIO_Pin =  PIN_ADC0 | PIN_VDD_VOLT;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+	GPIO_Init(GPIOA, &GPIO_InitStructure);
+
 	// PORTB CONFIG
-	GPIO_InitStructure.GPIO_Pin = 	PIN_ENABLE_TXD | PIN_ENABLE_RXD;
+	GPIO_InitStructure.GPIO_Pin = 	PIN_ENABLE_TXD | PIN_ENABLE_RXD | ADC_6_PIN_SIG_MOT1P | ADC_6_PIN_SIG_MOT1M;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
@@ -154,6 +174,27 @@ void GPIO_Configuration(void)
 
 	GPIO_ResetBits(PORT_ENABLE_TXD, PIN_ENABLE_TXD);	// TX Disable
 	GPIO_SetBits(PORT_ENABLE_RXD, PIN_ENABLE_RXD);	// RX Enable
+
+
+	// PORTC CONFIG
+	GPIO_InitStructure.GPIO_Pin =   PIN_ADC_SELECT0 | PIN_ADC_SELECT1 |  PIN_LED_POWER | ADC_4_PIN_SIG_MOT1P | ADC_4_PIN_SIG_MOT1M | ADC_5_PIN_SIG_MOT1P | ADC_5_PIN_SIG_MOT1M;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+
+
+	// set Analog input of ADC
+	GPIO_InitStructure.GPIO_Pin =  PIN_ADC0 | PIN_VDD_VOLT;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+	GPIO_Init(PORT_ADC0, &GPIO_InitStructure);
+
+	GPIO_InitStructure.GPIO_Pin =  PIN_ADC1;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+	GPIO_Init(PORT_ADC1, &GPIO_InitStructure);
+
+
+
 }
 
 
