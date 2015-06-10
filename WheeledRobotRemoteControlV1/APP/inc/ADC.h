@@ -60,6 +60,7 @@ void init_ADC();
 #define NUM_ADC5							0x04
 #define NUM_ADC6							0x05
 
-
+#define SIG_ADC_0						ADC_Channel_10
+#define SIG_ADC_1						ADC_Channel_5
 
 #endif /* APP_INC_ADC_H_ */

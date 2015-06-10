@@ -18,7 +18,28 @@
 
 #include "ADC.h"
 
+#define PORT_SIG_MOT1P          GPIOA
+#define PORT_SIG_MOT1M          GPIOA
 
+#define PIN_SIG_MOT1P           GPIO_Pin_0 //Turn on pin
+#define PIN_SIG_MOT1M           GPIO_Pin_1 //Turn on pin
+
+#define	SIG_ADC_1 				ADC_Channel_5 //select adc channel 
+#define SIG_ADC_0				ADC_Channel_10  // select adc channel 
+
+#define PORT_ADC_SELECT0        GPIOC
+#define PORT_ADC_SELECT1        GPIOC
+
+#define PORT_LED_POWER			GPIOC
+
+#define PIN_ADC_SELECT0         GPIO_Pin_1
+#define PIN_ADC_SELECT1         GPIO_Pin_2
+#define PIN_ADC0				GPIO_Pin_0
+#define PIN_VDD_VOLT			GPIO_Pin_3
+
+#define PIN_PC_TXD				GPIO_Pin_10
+
+#define PIN_LED_POWER			GPIO_Pin_13
 
 
 /* Private macro -------------------------------------------------------------*/
@@ -30,7 +51,7 @@ u32                             Baudrate_PC = 57600;
 
 
 void __ISR_DELAY(void);
-
+void GPIO_Start(void);
 
 
 
@@ -39,7 +60,7 @@ void __ISR_DELAY(void);
 int main(void)
 {
 	s16 i = 0;
-	u16 tempADCres;
+	u16 tempADCres, j;
     /* System Clocks Configuration */
 	RCC_Configuration();
 
@@ -48,6 +69,7 @@ int main(void)
 
 	/* GPIO configuration */
 	GPIO_Configuration(); // Setup of IOs
+	//GPIO_Start();
 
 	SysTick_Configuration(); // used for delay function (PC_Com.c)
 
@@ -64,57 +86,47 @@ int main(void)
 
 	while(1)
 	{
+		TxDString("starting wait\n\r");
+
 		mDelay(5000);
 		i = 0;
-		while(i <= 1000)
+		while(i <= 410)
 		{
 			set_IR_position(i);
-			tempADCres = sampleADC(NUM_ADC1);
-			TxDByte_PC((tempADCres&0xFF00)>>8);
-			TxDByte_PC((tempADCres&0x00FF));
-			TxDString("ADC_Done");
-			i +=30;
+			for (j = 0; j<6; j++)
+			{
+				tempADCres = sampleADC(NUM_ADC1+j);
+				TxDString("ADC data ");
+				TxDByte_PC(j);
+				TxDString(": ");
+				TxDByte_PC((tempADCres&0xFF00)>>8);
+				TxDByte_PC((tempADCres&0x00FF));
+				TxDString("\n\r");
+				
+			}
+			i +=25;
 		}
 
 		mDelay(1000);
-		i = 975;
+		i = 385;
 		while(i >= 0)
 		{
 			set_IR_position(i);
-			tempADCres = sampleADC(NUM_ADC1);
-			TxDByte_PC((tempADCres&0xFF00)>>8);
-			TxDByte_PC((tempADCres&0x00FF));
-			TxDString("ADC_Done");
+			for (j = 0; j<6; j++)
+			{
+				tempADCres = sampleADC(NUM_ADC1+j);
+				TxDString("ADC data ");
+				TxDByte_PC(j);
+				TxDString(": ");
+				TxDByte_PC((tempADCres&0xFF00)>>8);
+				TxDByte_PC((tempADCres&0x00FF));
+				TxDString("\n\r");
+				
+			}
 			i -=25;
 		}
 
-/*
-		if(PC_data_rdy == 1)
-		{
-			PC_data_rdy = 0;
 
-			if(PC_RX_com_buf[0]=='i')
-			{
-				move_forward(700);
-			}
-			else if(PC_RX_com_buf[0]=='j')
-			{
-				move_left(400);
-			}
-			else if(PC_RX_com_buf[0]=='k')
-			{
-				move_backward(700);
-			}
-			else if(PC_RX_com_buf[0]=='l')
-			{
-				move_right(400);
-			}
-			else
-			{
-				mDelay(100);
-				move_backward(0);
-			}
-		}*/
 
 	}
 
@@ -137,6 +149,4 @@ void __ISR_DELAY(void)
 	if (gwTimingDelay != 0x00)
 		gwTimingDelay--;
 }
-
-
 
