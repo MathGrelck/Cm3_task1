@@ -75,7 +75,7 @@ int main(void)
 	{
 
 
-
+/*
 		for (j = 0; j<5; j++)
 		{
 			ADCres_buf[j] = sampleADC(NUM_ADC1+j);
@@ -102,14 +102,30 @@ int main(void)
 		}
 
 
+*/
 
 
 
-		/*
 		tempADCres = 0;
-		TxDString("starting wait\n\r");
+		TxDString("1\n\r");
+		set_IR_position(214);
+		while(DXL_RX_com_buf[5]&0x01)
+		{
+			DXL_read_byte(2,MOVING);
+			TxDByte_PC(DXL_RX_com_buf[5]);
 
+		}
 		mDelay(5000);
+		TxDString("2\n\r");
+		set_IR_position(814);
+		while(DXL_RX_com_buf[5]&0x01)
+		{
+			DXL_read_byte(2,MOVING);
+			TxDByte_PC(DXL_RX_com_buf[5]);
+
+		}
+		mDelay(1000);
+		/*
 		i = 214;
 		while(i <= 814)
 		{
@@ -145,7 +161,7 @@ int main(void)
 			TxDByte_PC((tempADCres&0x00FF));
 			TxDString("\n\r");
 			i -=40;
-		}*/
+		} */
 
 
 

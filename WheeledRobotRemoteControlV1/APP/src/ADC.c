@@ -172,8 +172,8 @@ u16 sampleADC(u8 ADCnum)
 			uDelay(5);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
-			GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
-			GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
+		//	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
+		//	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
 
 
 
