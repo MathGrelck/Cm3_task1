@@ -44,7 +44,10 @@ void __ISR_DELAY(void);
 int main(void)
 {
 	s16 i = 0;
-	u16 tempADCres, j =0;
+	u16 tempADCres, j = 0, k = 0;
+	u16 sum, avg;
+	float hans;
+	double bo;
     /* System Clocks Configuration */
 	RCC_Configuration();
 
@@ -74,8 +77,50 @@ int main(void)
 	while(1)
 	{
 
+// MEASUREMENTS AND AVERAGE OF SENSORS
+		for(k = 0; k < 5; k++){
+			sum = 0;
 
+/*			for(j = 0; j < 9; j++){
+				sum = sampleADC(i);
+			}
+*/
+			sum = sampleADC(k);	
+
+			switch(i){
+				case 0:
+				// IR_SENSOR_LEFT_front
+				TxDString("sensor 1:");
+				break;
+
+				case 1:
+				//IR_SENSOR_front
+				TxDString("sensor 2:");
+				break;
+
+				case 2:
+				//IR_SENSOR_RIGHT
+				TxDString("sensor 3:");
+				break;
+
+				case 3:
+				//IR_SENSOR_RIGHT_front
+				TxDString("sensor 4:");
+				break;
+
+				case 4:
+				//IR_SENSOR_LEFT
+				TxDString("sensor 5:");
+				break;
+			}
+			TxDByte_PC((avg&0xFF00)>>8);
+			TxDByte_PC((avg&0x00FF));
+			TxDString("\r");
+		}	
+
+		mDelay(2000);
 /*
+// SIMPLE ORIENTATION BEHAVIOUR
 		for (j = 0; j<5; j++)
 		{
 			ADCres_buf[j] = sampleADC(NUM_ADC1+j);
@@ -105,7 +150,8 @@ int main(void)
 */
 
 
-
+/*
+//SWEEP CONTROLLER
 		tempADCres = 0;
 		TxDString("1\n\r");
 		set_IR_position(214);
@@ -125,7 +171,7 @@ int main(void)
 
 		}
 		mDelay(1000);
-		/*
+		
 		i = 214;
 		while(i <= 814)
 		{

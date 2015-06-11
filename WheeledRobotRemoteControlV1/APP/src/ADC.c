@@ -19,7 +19,7 @@ u16 sampleADC(u8 ADCnum)
 	{
 		case NUM_ADC1:
 
-			TxDString("starting ADC\n\r");
+			//TxDString("starting ADC\n\r");
 			GPIO_SetBits(ADC_1_PORT_SIG_MOT, ADC_1_PIN_SIG_MOT1P);
 			GPIO_ResetBits(ADC_1_PORT_SIG_MOT, ADC_1_PIN_SIG_MOT1M);
 
@@ -37,6 +37,10 @@ u16 sampleADC(u8 ADCnum)
 			uDelay(5);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
+
+			ADCres = isZero(ADCres);
+
+
 			GPIO_ResetBits(ADC_1_PORT_SIG_MOT, ADC_1_PIN_SIG_MOT1P);
 			GPIO_ResetBits(ADC_1_PORT_SIG_MOT, ADC_1_PIN_SIG_MOT1M);
 
@@ -62,6 +66,7 @@ u16 sampleADC(u8 ADCnum)
 			uDelay(5);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
+			ADCres = isZero(ADCres);
 			GPIO_ResetBits(ADC_2_PORT_SIG_MOT, ADC_2_PIN_SIG_MOT1P);
 			GPIO_ResetBits(ADC_2_PORT_SIG_MOT, ADC_2_PIN_SIG_MOT1M);
 
@@ -90,6 +95,7 @@ u16 sampleADC(u8 ADCnum)
 			uDelay(5);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
+			ADCres = isZero(ADCres);
 			GPIO_ResetBits(ADC_3_PORT_SIG_MOT, ADC_3_PIN_SIG_MOT1P);
 			GPIO_ResetBits(ADC_3_PORT_SIG_MOT, ADC_3_PIN_SIG_MOT1M);
 
@@ -117,6 +123,7 @@ u16 sampleADC(u8 ADCnum)
 			uDelay(5);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
+			ADCres = isZero(ADCres);
 			GPIO_ResetBits(ADC_4_PORT_SIG_MOT, ADC_4_PIN_SIG_MOT1P);
 			GPIO_ResetBits(ADC_4_PORT_SIG_MOT, ADC_4_PIN_SIG_MOT1M);
 
@@ -144,6 +151,7 @@ u16 sampleADC(u8 ADCnum)
 			uDelay(5);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
+			ADCres = isZero(ADCres);
 			GPIO_ResetBits(ADC_5_PORT_SIG_MOT, ADC_5_PIN_SIG_MOT1P);
 			GPIO_ResetBits(ADC_5_PORT_SIG_MOT, ADC_5_PIN_SIG_MOT1M);
 
@@ -172,6 +180,7 @@ u16 sampleADC(u8 ADCnum)
 			uDelay(5);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
+			ADCres = isZero(ADCres);
 		//	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
 		//	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
 
@@ -207,7 +216,7 @@ void init_ADC()
 
 	/* ADC1 regular channels configuration */
 	ADC_RegularChannelConfig(ADC1, SIG_ADC_0, 1 , ADC_SampleTime_239Cycles5);
-	//ADC_ITConfig(ADC1, ADC_IT_EOC, ENABLE);
+	ADC_ITConfig(ADC1, ADC_IT_EOC, ENABLE);
 
 	/* Enable ADC1 DMA */
 	//ADC_DMACmd(ADC1, ENABLE);
@@ -229,4 +238,14 @@ void init_ADC()
 
 	/* Start ADC1 Software Conversion */
 	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
+}
+
+u16 isZero(u16 ADCres){
+
+	if(ADCres > 0x0008){
+		return ADCres;
+	}
+	else{
+		return 0;
+	}
 }

@@ -12,8 +12,8 @@
 
 
 u16 sampleADC(u8);
-
 void init_ADC();
+u16 isZero(u16 ADCres);
 
 #define PIN_VDD_VOLT			GPIO_Pin_3
 
