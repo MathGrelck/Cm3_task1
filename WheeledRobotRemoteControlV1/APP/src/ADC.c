@@ -177,7 +177,7 @@ u16 sampleADC(u8 ADCnum)
 			ADC_SoftwareStartConvCmd(ADC1, ENABLE);
 
 			//ADC_SoftwareStartConvCmd(ADC2, ENABLE);
-			uDelay(5);
+			uDelay(7);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
 			ADCres = isZero(ADCres);

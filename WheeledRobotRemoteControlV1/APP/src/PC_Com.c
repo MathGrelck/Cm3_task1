@@ -84,6 +84,22 @@ void TxArray(u8 *bData, u8 len)
 	}
 }
 
+void TxDWord16(u16 wSentData) {
+	TxDByte_PC((wSentData >> 8) & 0xff);
+	TxDByte_PC(wSentData & 0xff);
+}
+void TxWordArray(u16 *bData, u8 len)
+{
+	int i;
+	for(i = 0; i<len; i++)
+	{
+		TxDWord16(bData);
+		TxDByte_PC("\n");
+		TxDByte_PC("\r");
+		*bData+=1;
+	}
+}
+
 void TxDByte_PC(u8 bTxdData)
 {
 	USART_SendData(USART3,bTxdData);
