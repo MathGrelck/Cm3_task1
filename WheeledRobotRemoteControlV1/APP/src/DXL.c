@@ -122,6 +122,7 @@ void DXL_read_byte(u8 devId, u8 add)
 {
 
 	u8 i, checksum = 0;
+	DXL_RX_buff_index = 0;
 	// Preamble-
 	DXL_TX_com_buf[0] = 0xff;
 	DXL_TX_com_buf[1] = 0xff;
@@ -156,7 +157,7 @@ void DXL_read_byte(u8 devId, u8 add)
 		DXL_TX(DXL_TX_com_buf[i]); // send data
 	}
 
-	mDelay(10); // TIS CAN BE IMPLEMENTED SMARTER: WITH CRC CHECK etc.!!!
+	uDelay(100); // TIS CAN BE IMPLEMENTED SMARTER: WITH CRC CHECK etc.!!!
 
 	/* DXL_RX_buff now contain the read message and error status:
 	 * DXL_RX_BUFF[0..1]: Preamble

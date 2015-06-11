@@ -14,6 +14,8 @@
 #define MOTOR_RIGHT_ADD	9
 #define MOTOR_STEP	2
 
+#define LEFT_MOTOR_CORR 10
+
 u16 old_speed = 0;
 
 
