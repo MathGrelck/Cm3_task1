@@ -169,7 +169,7 @@ u16 sampleADC(u8 ADCnum)
 			ADC_SoftwareStartConvCmd(ADC1, ENABLE);
 
 			//ADC_SoftwareStartConvCmd(ADC2, ENABLE);
-			uDelay(5);
+			uDelay(7);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
 		//	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
