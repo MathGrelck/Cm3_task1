@@ -10,10 +10,16 @@
 
 #include "stm32f10x_lib.h"
 
-void move_forward(u32 speed);
-void move_backward(u32 speed);
-void move_left(u32 speed);
-void move_right(u32 speed);
+#define MAX_SPEED 800
+
+
+void move_forward(u16 speed);
+void move_backward(u16 speed);
+void move_left(u16 speed);
+void move_right(u16 speed);
+void move_break();
 void init_motors();
 void set_IR_position(u16 pos);
+void turnRightOnSpot(u16 speed);
+void turnLeftOnSpot(u16 speed);
 #endif /* APP_INC_MOTORCONTROL_H_ */

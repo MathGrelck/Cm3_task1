@@ -192,7 +192,7 @@ void Init_Timer2()
 	TIM2->ARR = 0xFFFF; // Reload register
 
 	TIM2->CCMR1 = 0x0000; // NO output compare and input capture!!!
-	TIM2->DIER = 0x0002; // CC1IE UIE
+	//TIM2->DIER = 0x0002; // CC1IE UIE
 	TIM2->CCR1 = 0xFF00; // CCR1 value = ~10 times overflow pr rotation of IR sensor
 	TIM2->CNT = 0x0000;
 	//TIM2->CR1 = TIM_CR1_CEN; // ENABLE TIMER!

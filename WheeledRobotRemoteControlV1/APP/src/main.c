@@ -16,6 +16,7 @@
 #include "DXL.h"
 #include "DXLdef.h"
 #include "MotorControl.h"
+#include <math.h>
 
 #include "ADC.h"
 
@@ -26,6 +27,8 @@
 #define IR_SENSOR_LEFT				4
 #define IR_LONG_DIST				5
 
+#define	WALL_TRACK_RIGHT			0
+#define	WALL_TRACK_LEFT				1
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
@@ -35,13 +38,14 @@ u32                             Baudrate_PC = 57600;
 u16								ADCres_buf[50];
 u16								ADCres_buf_index = 0;
 u16 							diff = 0;
+u8								wallTrackSide = 0;
 u8								IRsweepDone, sweepDirection = 0;
 vu16								count = 214;
 float SCALE = 0.7f;
 
 void __ISR_DELAY(void);
 void startIRsweep();
-
+void setWallTrackSide();
 
 
 
@@ -76,16 +80,20 @@ int main(void)
 
 	init_ADC();
 
-	//GPIO_SetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
-	//GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
-	set_IR_position(330);
+	GPIO_SetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
+	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
+	mDelay(1000);
+//	set_IR_position(300);
 
+	setWallTrackSide();
+	mDelay(1000);
 	//startIRsweep();
 
+	move_forward(MAX_SPEED);
 
 	while(1)
 	{
-/*
+/*	
 		if(IRsweepDone == 1)
 		{
 			TxDString("buff \n\r");
@@ -151,43 +159,112 @@ int main(void)
 		mDelay(2000);
 */
 // SIMPLE ORIENTATION BEHAVIOUR
+
+
 		for (j = 0; j<6; j++)
 		{
-			ADCres_buf[j] = sampleADC(NUM_ADC1+j);
+			ADCres_buf[j] = (sampleADC(NUM_ADC1+j)+sampleADC(NUM_ADC1+j) + sampleADC(NUM_ADC1+j)+sampleADC(NUM_ADC1+j))>>2;
 
 		}
+
+		if(ADCres_buf[IR_SENSOR_FRONT] > 0)
+		{
+			//for(j = 700; j > 0; j-=100)
+			//{
+			//	move_forward(j);
+			//	mDelay(40);
+			//}
+
+			move_break();
+
+			mDelay(300);
+
+		while((sampleADC(IR_SENSOR_FRONT) + sampleADC(IR_SENSOR_FRONT) + sampleADC(IR_SENSOR_FRONT)+sampleADC(IR_SENSOR_FRONT))>>2){	
+
+
+			if(wallTrackSide == WALL_TRACK_RIGHT)
+				{
+					turnLeftOnSpot(700);
+				}
+				else
+				{
+					turnRightOnSpot(700);
+				}
+
+				mDelay(50);
+				
+				move_break();
+
+				mDelay(150);
+			}
+
+			move_forward(800);
+
+		}
+		else if((ADCres_buf[IR_SENSOR_RIGHT] >ADCres_buf[IR_SENSOR_LEFT]) || (ADCres_buf[IR_SENSOR_RIGHT_front] > ADCres_buf[IR_SENSOR_LEFT_front]))
+		{
+			move_left(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + (((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front]))*6) + ADCres_buf[IR_SENSOR_RIGHT_front]*8);
+		}
+		else if((ADCres_buf[IR_SENSOR_LEFT] > ADCres_buf[IR_SENSOR_RIGHT]) || (ADCres_buf[IR_SENSOR_LEFT_front] > ADCres_buf[IR_SENSOR_RIGHT_front]) )
+		{
+			move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + (((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front]))*6) + ADCres_buf[IR_SENSOR_RIGHT_front]*8);
+		}
+		else if(ADCres_buf[IR_LONG_DIST] >= 850)//Wall track
+		{
+			if(wallTrackSide == WALL_TRACK_RIGHT)
+			{
+				move_left((ADCres_buf[IR_LONG_DIST]-805));
+			}
+			else
+			{
+				move_right((ADCres_buf[IR_LONG_DIST]-805));
+			}
+			
+		}
+		else if(ADCres_buf[IR_LONG_DIST] <= 700) // wall track
+		{
+			if(wallTrackSide == WALL_TRACK_RIGHT)
+			{
+				move_right((745-(ADCres_buf[IR_LONG_DIST])));
+			}
+			else
+			{
+				move_left((745-(ADCres_buf[IR_LONG_DIST])));
+			}
+			
+		}
+		else
+		{
+			move_forward(MAX_SPEED);
+		}
+
+		uDelay(10);
+
+		/*
 		if(ADCres_buf[IR_SENSOR_FRONT] > 20){
+			move_backward(300);
+			mDelay(250);
 			move_forward(300);
 		}
 		else{
-			move_forward(900);
+			move_forward(800);
 		}
 		if(ADCres_buf[IR_LONG_DIST] > 850){
-			move_left(ADCres_buf[IR_LONG_DIST]-400);
+			move_left(ADCres_buf[IR_LONG_DIST]-200);
 		}
 		else if(ADCres_buf[IR_LONG_DIST] < 700){
-			move_right((1100-ADCres_buf[IR_LONG_DIST]-400));
+			move_right((1100-ADCres_buf[IR_LONG_DIST]-200));
 		}
 
 		if((ADCres_buf[IR_SENSOR_RIGHT] >ADCres_buf[IR_SENSOR_LEFT]) || (ADCres_buf[IR_SENSOR_RIGHT_front] > ADCres_buf[IR_SENSOR_LEFT_front]))
 		{
-			if(ADCres_buf[IR_SENSOR_FRONT] > 50)
-			{
-				move_right(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front])*3) + ADCres_buf[IR_SENSOR_FRONT]*4);
-			}
-
-			move_left(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front]))*3);
+			move_left(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])*2) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front]))*4);
 		}
 		else if((ADCres_buf[IR_SENSOR_LEFT] > ADCres_buf[IR_SENSOR_RIGHT]) || (ADCres_buf[IR_SENSOR_LEFT_front] > ADCres_buf[IR_SENSOR_RIGHT_front]) )
 		{
-			if(ADCres_buf[IR_SENSOR_FRONT] > 50)
-			{
-				move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front])*3) + ADCres_buf[IR_SENSOR_FRONT]*4);
-			}
-
-			move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front]))*3);
+			move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])*2) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front]))*4);
 		}
-
+*/
 
 
 
@@ -333,5 +410,33 @@ void startIRsweep()
 	TIM2->CNT = 0;
 	TIM2->CR1 = TIM_CR1_CEN; // ENABLE TIMER!
 
+}
+
+void setWallTrackSide()
+{
+	set_IR_position(330);
+	set_IR_position(330);
+	mDelay(500);
+	ADCres_buf[0] = sampleADC(NUM_ADC6);
+
+
+	set_IR_position(698);
+	set_IR_position(698);
+	mDelay(500);
+	ADCres_buf[1] = sampleADC(NUM_ADC6);
+
+	if(ADCres_buf[0] > ADCres_buf[1])
+	{
+		wallTrackSide = WALL_TRACK_RIGHT;
+		set_IR_position(330);
+
+	}
+	else
+	{
+
+		wallTrackSide = WALL_TRACK_LEFT;
+		set_IR_position(698);
+
+	}
 }
 

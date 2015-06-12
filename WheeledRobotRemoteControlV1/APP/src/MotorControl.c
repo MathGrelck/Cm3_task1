@@ -8,7 +8,7 @@
 
 #include "DXL.h"
 #include "DXLdef.h"
-
+#include "MotorControl.h"
 
 #define MOTOR_LEFT_ADD 	10
 #define MOTOR_RIGHT_ADD	9
@@ -16,7 +16,7 @@
 
 #define RIGHT_MOTOR_CORR 45
 
-u16 old_speed = 0;
+u16 old_speed = MAX_SPEED;
 
 
 void set_IR_position(u16 pos)
@@ -34,9 +34,9 @@ void move_forward(u16 speed)
 {
 	u16 temp = 0;
 
-	if(speed > 1023)
+	if(speed > MAX_SPEED)
 	{
-		speed = 1023;
+		speed = MAX_SPEED;
 	}
 
 	temp = 1024 + speed; //Set MSB!
@@ -48,9 +48,9 @@ void move_forward(u16 speed)
 void move_backward(u16 speed)
 {
 	u16 temp = 0;
-	if(speed > 1023)
+	if(speed > MAX_SPEED)
 	{
-		speed = 1023;
+		speed = MAX_SPEED;
 	}
 
 	temp = 1024 + speed; //Set MSB!
@@ -63,9 +63,9 @@ void move_backward(u16 speed)
 void move_left(u16 speed)
 {
 
-	if(speed > 1023)
+	if(speed > MAX_SPEED)
 	{
-		speed = 1023;
+		speed = MAX_SPEED;
 	}
 	speed = old_speed - speed;
 
@@ -77,15 +77,24 @@ void move_left(u16 speed)
 void move_right(u16 speed)
 {
 
-	if(speed > 1023)
+	if(speed > MAX_SPEED)
 	{
-		speed = 1023;
+		speed = MAX_SPEED;
 	}
 	speed = old_speed - speed;
 
 	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, speed);
-	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, old_speed ^1024);
+	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, old_speed^1024);
 
+}
+
+void move_break()
+{
+	//DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, 0);
+	//DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, 0);
+
+	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, 0);//250-RIGHT_MOTOR_CORR);
+	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, 0);//1024+250);
 }
 
 void init_motors()
@@ -95,3 +104,16 @@ void init_motors()
 
 }
 
+void turnLeftOnSpot(u16 speed)
+{
+	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, speed^1024);
+	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, speed^1024);
+}
+
+void turnRightOnSpot(u16 speed)
+{
+
+	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, speed);
+	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, speed);	
+	
+}

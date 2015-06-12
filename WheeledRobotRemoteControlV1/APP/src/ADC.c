@@ -7,6 +7,7 @@
 
 #include "stm32f10x_lib.h"
 #include "ADC.h"
+ #include "MotorControl.h"
 
 
 
@@ -39,7 +40,6 @@ u16 sampleADC(u8 ADCnum)
 			ADCres = (ADC_GetConversionValue(ADC1));
 
 			ADCres = isZero(ADCres);
-			TxDString("sensor call");
 
 			GPIO_ResetBits(ADC_1_PORT_SIG_MOT, ADC_1_PIN_SIG_MOT1P);
 			GPIO_ResetBits(ADC_1_PORT_SIG_MOT, ADC_1_PIN_SIG_MOT1M);
@@ -180,6 +180,11 @@ u16 sampleADC(u8 ADCnum)
 			uDelay(7);
 
 			ADCres = (ADC_GetConversionValue(ADC1));
+
+//			if(ADCres>1023)
+//			{
+//				ADCres = MAX_SPEED;
+//			}
 		//	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
 		//	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
 
@@ -241,7 +246,7 @@ void init_ADC()
 
 u16 isZero(u16 ADCres){
 
-	if(ADCres > 20){
+	if(ADCres > 75){
 		return ADCres;
 	}
 	else{
