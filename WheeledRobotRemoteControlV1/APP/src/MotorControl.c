@@ -14,7 +14,7 @@
 #define MOTOR_RIGHT_ADD	9
 #define MOTOR_STEP	2
 
-#define LEFT_MOTOR_CORR 10
+#define RIGHT_MOTOR_CORR 45
 
 u16 old_speed = 0;
 
@@ -41,7 +41,7 @@ void move_forward(u16 speed)
 
 	temp = 1024 + speed; //Set MSB!
 	old_speed = temp; // save speed for "turn" function
-	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, temp);
+	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, temp-RIGHT_MOTOR_CORR);
 	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, speed);
 }
 
@@ -55,7 +55,7 @@ void move_backward(u16 speed)
 
 	temp = 1024 + speed; //Set MSB!
 	old_speed = speed;
-	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, speed);
+	DXL_send_word(MOTOR_LEFT_ADD, MOVING_SPEED_L, speed-RIGHT_MOTOR_CORR);
 	DXL_send_word(MOTOR_RIGHT_ADD, MOVING_SPEED_L, temp);
 
 }

@@ -350,7 +350,7 @@ void DMA1_Channel7_IRQHandler(void)
 
 void ADC1_2_IRQHandler(void)
 {
-  TxDString("hej");
+  //TxDString("hej");
 }
 
 /*******************************************************************************

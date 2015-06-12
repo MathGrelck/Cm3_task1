@@ -24,6 +24,7 @@
 #define IR_SENSOR_FRONT				1
 #define IR_SENSOR_LEFT_front		0
 #define IR_SENSOR_LEFT				4
+#define IR_LONG_DIST				5
 
 
 /* Private macro -------------------------------------------------------------*/
@@ -75,11 +76,11 @@ int main(void)
 
 	init_ADC();
 
-	GPIO_SetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
-	GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
+	//GPIO_SetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1P);
+	//GPIO_ResetBits(ADC_6_PORT_SIG_MOT, ADC_6_PIN_SIG_MOT1M);
+	set_IR_position(330);
 
-
-	startIRsweep();
+	//startIRsweep();
 
 
 	while(1)
@@ -106,13 +107,14 @@ int main(void)
 		uDelay(10);
 */
 
+/*
 // MEASUREMENTS AND AVERAGE OF SENSOR
 		for(k = 0; k < 5; k++){
 			sum = 0;
-/*			for(j = 0; j < 9; j++){
+			for(j = 0; j < 9; j++){
 				sum = sampleADC(i);
 			}
-*/
+
 			sum = sampleADC(k);	
 
 			switch(i){
@@ -147,35 +149,48 @@ int main(void)
 		}	
 
 		mDelay(2000);
-/*
+*/
 // SIMPLE ORIENTATION BEHAVIOUR
-		for (j = 0; j<5; j++)
+		for (j = 0; j<6; j++)
 		{
 			ADCres_buf[j] = sampleADC(NUM_ADC1+j);
 
 		}
-		move_forward(400);
+		if(ADCres_buf[IR_SENSOR_FRONT] > 20){
+			move_forward(300);
+		}
+		else{
+			move_forward(900);
+		}
+		if(ADCres_buf[IR_LONG_DIST] > 850){
+			move_left(ADCres_buf[IR_LONG_DIST]-400);
+		}
+		else if(ADCres_buf[IR_LONG_DIST] < 700){
+			move_right((1100-ADCres_buf[IR_LONG_DIST]-400));
+		}
+
 		if((ADCres_buf[IR_SENSOR_RIGHT] >ADCres_buf[IR_SENSOR_LEFT]) || (ADCres_buf[IR_SENSOR_RIGHT_front] > ADCres_buf[IR_SENSOR_LEFT_front]))
 		{
-			if(ADCres_buf[IR_SENSOR_FRONT] > 200)
+			if(ADCres_buf[IR_SENSOR_FRONT] > 50)
 			{
-				move_right(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front])*2) + ADCres_buf[IR_SENSOR_FRONT]*2);
+				move_right(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front])*3) + ADCres_buf[IR_SENSOR_FRONT]*4);
 			}
 
-			move_left(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front]))*2);
+			move_left(((ADCres_buf[IR_SENSOR_RIGHT] - ADCres_buf[IR_SENSOR_LEFT])) + ((ADCres_buf[IR_SENSOR_RIGHT_front]-ADCres_buf[IR_SENSOR_LEFT_front]))*3);
 		}
 		else if((ADCres_buf[IR_SENSOR_LEFT] > ADCres_buf[IR_SENSOR_RIGHT]) || (ADCres_buf[IR_SENSOR_LEFT_front] > ADCres_buf[IR_SENSOR_RIGHT_front]) )
 		{
-			if(ADCres_buf[IR_SENSOR_FRONT] > 300)
+			if(ADCres_buf[IR_SENSOR_FRONT] > 50)
 			{
-				move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front])*2) + ADCres_buf[IR_SENSOR_FRONT]*2);
+				move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front])*3) + ADCres_buf[IR_SENSOR_FRONT]*4);
 			}
 
-			move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front]))*2);
+			move_right(((ADCres_buf[IR_SENSOR_LEFT] - ADCres_buf[IR_SENSOR_RIGHT])) + ((ADCres_buf[IR_SENSOR_LEFT_front]-ADCres_buf[IR_SENSOR_RIGHT_front]))*3);
 		}
 
 
-*/
+
+
 
 
 //SWEEP CONTROLLER
@@ -205,7 +220,6 @@ int main(void)
 		TxDByte_PC(DXL_RX_com_buf[5]);
 		mDelay(1000); */
 
-//----------------------------------------------------------
 		/*
 		i = 214;
 		while(i <= 814)
