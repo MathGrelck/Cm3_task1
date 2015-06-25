@@ -23,6 +23,8 @@ plot(x,y,'LineWidth',2,'Color','r')
 title('Left side with modified code')
 line([pd.mu pd.mu],[0 3],'LineStyle','--','Color','k');
 xlim([9.5 11])
+xlabel('time [s]')
+ylabel('samples')
 hold off
 
 %% Left side run with original code
@@ -43,6 +45,8 @@ plot(x,y,'LineWidth',2,'Color','r')
 line([pd.mu pd.mu],[0 3],'LineStyle','--','Color','k');
 title('Left side with original code')
 xlim([13 15])
+xlabel('time [s]')
+ylabel('samples')
 hold off
 
 %% Right side run with modified code
@@ -63,6 +67,8 @@ plot(x,y,'LineWidth',2,'Color','r')
 line([pd.mu pd.mu],[0 3],'LineStyle','--','Color','k');
 title('Right side with modified code')
 xlim([8.5 10.5])
+xlabel('time [s]')
+ylabel('samples')
 hold off
 %% Right side run with original code
 clc
@@ -82,4 +88,6 @@ plot(x,y,'LineWidth',2,'Color','r')
 line([pd.mu pd.mu],[0 3],'LineStyle','--','Color','k');
 title('Right side with original code')
 xlim([11 16])
+xlabel('time [s]')
+ylabel('samples')
 hold off
